@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinemania - Нэвтрэх & Бүртгүүлэх</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="undsen-tses">
+    <a href="index.html" class="site-logo"><img src="logo.jpg" alt="Logo"> CINEMANIA</a>
+    <ul class="list-pages">
+        <li><a href="index.html">Нүүр</a></li>
+        <li><a href="movies.html">Кино</a></li>
+        <li><a href="series.html">Сериал</a></li>
+        <li><a href="trailers.html">Трейлер</a></li>
+        <li><a href="top-rated.html">Топ 10</a></li>
+        <li><a href="actors.html">Жүжигчид</a></li>
+        <li><a href="contact.html">Холбоо барих</a></li>
+    </ul>
+    <div>
+        <span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span>
+        <a href="login.html" class="btn active">Нэвтрэх</a>
+    </div>
+</nav>
+
+<div class="container" style="max-width: 450px; margin-top: 40px;">
+    
+    <div id="main-card" style="background: #1f1f1f; padding: 30px; border-radius: 8px; border: 1px solid #333;">
+        
+        <!-- Сонгох товчлуурууд (Tabs) -->
+        <div id="tab-buttons" style="display: flex; margin-bottom: 25px; border-bottom: 1px solid #333;">
+            <button id="tab-burtgel-btn" onclick="showBurtgel()" style="flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid #ffc107; color: #ffc107; font-weight: bold; cursor: pointer;">Бүртгүүлэх</button>
+            <button id="tab-nevtreh-btn" onclick="showNevtreh()" style="flex: 1; padding: 10px; background: none; border: none; color: #aaa; cursor: pointer;">Нэвтрэх</button>
+        </div>
+
+        <!-- 1. БҮРТГҮҮЛЭХ ХЭСЭГ (Анх нээлттэй харагдана) -->
+        <div id="burtgel-sec">
+            <h3 style="color: #fff; text-align: center; margin-bottom: 15px;">Шинэ хэрэглэгч бүртгүүлэх</h3>
+            <p id="b-msg" style="text-align: center; margin-bottom: 15px; font-size: 14px;"></p>
+            <form onsubmit="burtgeh(event)">
+                <div style="margin-bottom: 15px;">
+                    <label style="color: #ddd; display: block; margin-bottom: 5px;">Хэрэглэгчийн нэр</label>
+                    <input type="text" id="b-ner" placeholder="Нэрээ оруулна уу" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="color: #ddd; display: block; margin-bottom: 5px;">И-мэйл хаяг</label>
+                    <input type="email" id="b-email" placeholder="example@gmail.com" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="color: #ddd; display: block; margin-bottom: 5px;">Нууц үг</label>
+                    <input type="password" id="b-nuuts" placeholder="********" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                </div>
+                <button type="submit" class="btn" style="width: 100%; text-align: center; cursor: pointer;">Бүртгүүлэх</button>
+            </form>
+        </div>
+
+        <!-- 2. НЭВТРЭХ ХЭСЭГ (Түр нуугдсан байна) -->
+        <div id="nevtreh-sec" style="display: none;">
+            <h3 style="color: #fff; text-align: center; margin-bottom: 15px;">Системд нэвтрэх</h3>
+            <p id="n-msg" style="text-align: center; margin-bottom: 15px; font-size: 14px;"></p>
+            <form onsubmit="nevtreh(event)">
+                <div style="margin-bottom: 15px;">
+                    <label style="color: #ddd; display: block; margin-bottom: 5px;">И-мэйл хаяг</label>
+                    <input type="email" id="n-email" placeholder="example@gmail.com" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="color: #ddd; display: block; margin-bottom: 5px;">Нууц үг</label>
+                    <input type="password" id="n-nuuts" placeholder="********" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                </div>
+                <button type="submit" class="btn" style="width: 100%; text-align: center; cursor: pointer;">Нэвтрэх</button>
+            </form>
+        </div>
+
+        <!-- 3. АККАУНТ ПРЕВЬЮ ХЭСЭГ (Нэвтэрсний дараа гарч ирнэ) -->
+        <div id="profile-sec" style="display: none; text-align: center; padding: 10px;">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Profile" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 2px solid #ffc107;">
+            <h3 id="p-ner" style="color: #ffc107; margin-bottom: 5px;"></h3>
+            <p id="p-email" style="color: #aaa; font-size: 14px; margin-bottom: 20px;"></p>
+            
+            <div style="background: #2a2a2a; padding: 15px; border-radius: 6px; text-align: left; margin-bottom: 20px;">
+                <p style="color: #ddd; font-size: 14px; margin-bottom: 5px;"><strong>Сайтын статус:</strong> Гишүүн (VIP)</p>
+                <p style="color: #ddd; font-size: 14px;"><strong>Үзсэн кинонуудын тоо:</strong> 0</p>
+            </div>
+            
+            <button onclick="garah()" class="btn" style="width: 100%; cursor: pointer;">Системээс гарах</button>
+        </div>
+
+    </div>
+
+</div>
+
+<footer class="Footer" style="margin-top: 50px;"><p>Cinemania © 2026. Бүх эрх хуулиар хамгаалагдсан.</p></footer>
+
+<script>
+// Огноо гаргах
+document.getElementById('date-display').innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
+
+// Мэдээлэл хадгалах хувьсагчууд
+let savedNer = "";
+let savedEmail = "";
+let savedNuuts = "";
+
+// Таб солих функцүүд (Нэг хэсгийг харуулж, нөгөөг нууна)
+function showBurtgel() {
+    document.getElementById('burtgel-sec').style.display = 'block';
+    document.getElementById('nevtreh-sec').style.display = 'none';
+    document.getElementById('tab-burtgel-btn').style.color = '#ffc107';
+    document.getElementById('tab-burtgel-btn').style.borderBottom = '2px solid #ffc107';
+    document.getElementById('tab-nevtreh-btn').style.color = '#aaa';
+    document.getElementById('tab-nevtreh-btn').style.borderBottom = 'none';
+}
+
+function showNevtreh() {
+    document.getElementById('burtgel-sec').style.display = 'none';
+    document.getElementById('nevtreh-sec').style.display = 'block';
+    document.getElementById('tab-nevtreh-btn').style.color = '#ffc107';
+    document.getElementById('tab-nevtreh-btn').style.borderBottom = '2px solid #ffc107';
+    document.getElementById('tab-burtgel-btn').style.color = '#aaa';
+    document.getElementById('tab-burtgel-btn').style.borderBottom = 'none';
+}
+
+// 1. БҮРТГҮҮЛЭХ
+function burtgeh(event) {
+    event.preventDefault();
+    let ner = document.getElementById('b-ner').value;
+    let email = document.getElementById('b-email').value;
+    let nuuts = document.getElementById('b-nuuts').value;
+    let msg = document.getElementById('b-msg');
+
+    if (ner == "") {
+        msg.style.color = "red";
+        msg.innerText = "Нэрээ оруулна уу!";
+    } else if (email == "") {
+        msg.style.color = "red";
+        msg.innerText = "И-мэйл хаягаа оруулна уу!";
+    } else if (nuuts == "") {
+        msg.style.color = "red";
+        msg.innerText = "Нууц үгээ оруулна уу!";
+    } else {
+        savedNer = ner;
+        savedEmail = email;
+        savedNuuts = nuuts;
+        
+        msg.style.color = "green";
+        msg.innerText = "Амжилттай бүртгэгдлээ! Нэвтрэх хэсэг рүү шилжиж байна...";
+        
+        // 1 секундээс нэвтрэх хэсэг рүү өөрөө шилжүүлнэ
+        setTimeout(function() {
+            showNevtreh();
+        }, 1000);
+    }
+}
+
+// 2. НЭВТРЭХ
+function nevtreh(event) {
+    event.preventDefault();
+    let email = document.getElementById('n-email').value;
+    let nuuts = document.getElementById('n-nuuts').value;
+    let msg = document.getElementById('n-msg');
+
+    if (savedEmail == "") {
+        msg.style.color = "red";
+        msg.innerText = "Бүртгэлтэй хэрэглэгч олдсонгүй. Эхлээд бүртгүүлнэ үү!";
+    } else if (email == "") {
+        msg.style.color = "red";
+        msg.innerText = "И-мэйлээ оруулна уу!";
+    } else if (nuuts == "") {
+        msg.style.color = "red";
+        msg.innerText = "Нууц үгээ оруулна уу!";
+    } else {
+        if (email == savedEmail) {
+            if (nuuts == savedNuuts) {
+                // Бүртгэл, нэвтрэх хэсэг болон таб товчлууруудыг бүгдийг нь нуух
+                document.getElementById('burtgel-sec').style.display = 'none';
+                document.getElementById('nevtreh-sec').style.display = 'none';
+                document.getElementById('tab-buttons').style.display = 'none';
+
+                // Аккаунт превью хэсгийг гаргаж ирэх
+                document.getElementById('profile-sec').style.display = 'block';
+                document.getElementById('p-ner').innerText = savedNer;
+                document.getElementById('p-email').innerText = savedEmail;
+            } else {
+                msg.style.color = "red";
+                msg.innerText = "Нууц үг буруу байна!";
+            }
+        } else {
+            msg.style.color = "red";
+            msg.innerText = "Бүртгэгдээгүй и-мэйл байна!";
+        }
+    }
+}
+
+// 3. ГАРАХ
+function garah() {
+    // Буцаагаад формыг гаргаж ирнэ
+    document.getElementById('profile-sec').style.display = 'none';
+    document.getElementById('tab-buttons').style.display = 'flex';
+    showNevtreh();
+}
+</script>
+
+</body>
+</html>

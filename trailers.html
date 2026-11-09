@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinemania - Трейлерүүд</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="undsen-tses">
+    <a href="index.html" class="site-logo"><img src="logo.jpg" alt="Logo"> CINEMANIA</a>
+    <ul class="list-pages">
+        <li><a href="index.html">Нүүр</a></li>
+        <li><a href="movies.html">Кино</a></li>
+        <li><a href="series.html">Сериал</a></li>
+        <li><a href="trailers.html" class="active">Трейлер</a></li>
+        <li><a href="top-rated.html">Топ 10</a></li>
+        <li><a href="actors.html">Жүжигчид</a></li>
+        <li><a href="contact.html">Холбоо барих</a></li>
+    </ul>
+    <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
+</nav>
+
+<div class="container">
+    <h2 class="garchig">Шинэ болон шилдэг кинонуудын трейлер</h2>
+    <div class="kino-suljee" style="display: flex; flex-direction: column; gap: 30px;">
+        
+        <div style="background: #1f1f1f; padding: 20px; border-radius: 8px;">
+            <h3 style="color: #ffc107; margin-bottom: 10px;">Interstellar - Албан ёсны трейлер</h3>
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/zSWdZVtXT7E" title="Interstellar Trailer" frameborder="0" allowfullscreen style="border-radius: 6px;"></iframe>
+        </div>
+
+        <div style="background: #1f1f1f; padding: 20px; border-radius: 8px;">
+            <h3 style="color: #ffc107; margin-bottom: 10px;">Oppenheimer - Албан ёсны трейлер</h3>
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/uYPbbksJxIg" title="Oppenheimer Trailer" frameborder="0" allowfullscreen style="border-radius: 6px;"></iframe>
+        </div>
+
+    </div>
+</div>
+
+<footer class="Footer"><p>Cinemania © 2026. Бүх эрх хуулиар хамгаалагдсан.</p></footer>
+<script>document.getElementById('date-display').innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();</script>
+</body>
+</html>

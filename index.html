@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinemania - Нүүр хуудас</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="undsen-tses">
+    <a href="index.html" class="site-logo">
+        <img src="logo.jpg" alt="Logo"> CINEMANIA
+    </a>
+    <ul class="list-pages">
+        <li><a href="index.html" class="active">Нүүр</a></li>
+        <li><a href="movies.html">Кино</a></li>
+        <li><a href="series.html">Сериал</a></li>
+        <li><a href="trailers.html">Трейлер</a></li>
+        <li><a href="top-rated.html">Топ 10</a></li>
+        <li><a href="actors.html">Жүжигчид</a></li>
+        <li><a href="contact.html">Холбоо барих</a></li>
+    </ul>
+    <div>
+        <span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span>
+        <a href="login.html" class="btn" style="padding: 6px 12px; font-size: 14px;">Нэвтрэх</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="banner">
+        <h1>Шилдэг киноны ертөнцөд тавтай морил</h1>
+        <p>Хамгийн сүүлийн үеийн сонирхолтой кинонууд болон трейлерүүдийг үзэх.</p>
+        <a href="movies.html" class="btn">Кино үзэх</a>
+    </div>
+
+    <h2 class="garchig">Онцлох кинонууд</h2>
+    <div class="kino-suljee">
+        <div class="movie-card">
+            <img src="https://m.media-amazon.com/images/I/71Lvqoov42L._AC_SY879_.jpg" alt="Avatar">
+            <h3 class="movie-title">Avatar: The Way of Water</h3>
+            <p class="movie-news">Адал явдалт, Зөгнөлт | 2022</p>
+            <a href="movie-avatar.html" class="btn">Дэлгэрэнгүй</a>
+        </div>
+        <div class="movie-card">
+            <img src="https://m.media-amazon.com/images/I/71xDtUSyAKL._AC_SY879_.jpg" alt="Oppenheimer">
+            <h3 class="movie-title">Oppenheimer</h3>
+            <p class="movie-news">Намтар, Драма | 2023</p>
+            <a href="movie-oppenheimer.html" class="btn">Дэлгэрэнгүй</a>
+        </div>
+        <div class="movie-card">
+            <img src="https://m.media-amazon.com/images/I/71JC2qvPx5L._AC_SY879_.jpg" alt="Interstellar">
+            <h3 class="movie-title">Interstellar</h3>
+            <p class="movie-news">Сансар, Зөгнөлт | 2014</p>
+            <a href="movie-interstellar.html" class="btn">Дэлгэрэнгүй</a>
+        </div>
+        <div class="movie-card">
+            <img src="https://m.media-amazon.com/images/M/MV5BNTc0YmQxMjEtODI5MC00NjFiLTlkMWUtOGQ5NjFmYWUyZGJhXkEyXkFqcGc@._V1_.jpg" alt="Dune 2">
+            <h3 class="movie-title">Dune: Part Two</h3>
+            <p class="movie-news">Адал явдалт, Зөгнөлт | 2024</p>
+            <a href="movie-dune.html" class="btn">Дэлгэрэнгүй</a>
+        </div>
+        <div class="movie-card">
+            <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" alt="Inception">
+            <h3 class="movie-title">Inception</h3>
+            <p class="movie-news">Триллер, Зөгнөлт | 2010</p>
+            <a href="movie-inception.html" class="btn">Дэлгэрэнгүй</a>
+        </div>
+        <!-- 6 -->
+        <div class="movie-card">
+            <img src="https://cdn.europosters.eu/image/1300/197743.jpg" alt="Dark Knight">
+            <h3 class="movie-title">The Dark Knight</h3>
+            <p class="movie-news">Гэмт хэрэг, Тулаант | 2008</p>
+            <a href="movie-darkknight.html" class="btn">Дэлгэрэнгүй</a>
+        </div>
+</div>
+</div>
+
+<footer class="Footer">
+    <p>Cinemania © 2026. Бүх эрх хуулиар хамгаалагдсан.</p>
+</footer>
+
+<script>
+let dateElement = document.getElementById('date-display');
+let today = new Date();
+dateElement.innerText = today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
+</script>
+
+</body>
+</html>

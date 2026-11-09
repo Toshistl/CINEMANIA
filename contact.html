@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinemania - Холбоо барих</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="undsen-tses">
+    <a href="index.html" class="site-logo"><img src="logo.jpg" alt="Logo"> CINEMANIA</a>
+    <ul class="list-pages">
+        <li><a href="index.html">Нүүр</a></li>
+        <li><a href="movies.html">Кино</a></li>
+        <li><a href="series.html">Сериал</a></li>
+        <li><a href="trailers.html">Трейлер</a></li>
+        <li><a href="top-rated.html">Топ 10</a></li>
+        <li><a href="actors.html">Жүжигчид</a></li>
+        <li><a href="contact.html" class="active">Холбоо барих</a></li>
+    </ul>
+    <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
+</nav>
+
+<div class="container" style="max-width: 600px; margin-top: 30px;">
+    <div style="background: #1f1f1f; padding: 30px; border-radius: 8px; border: 1px solid #333;">
+        <h2 style="color: #ffc107; text-align: center; margin-bottom: 20px;">Бидэнтэй холбогдох</h2>
+        <p style="color: #aaa; text-align: center; margin-bottom: 20px; font-size: 14px;">Сэтгэгдэл, санал хүсэлтээ бидэнд илгээгээрэй.</p>
+        <form>
+            <div style="margin-bottom: 15px;">
+                <label style="color: #ddd; display: block; margin-bottom: 5px;">Таны нэр</label>
+                <input type="text" placeholder="Нэр" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="color: #ddd; display: block; margin-bottom: 5px;">И-мэйл хаяг</label>
+                <input type="email" placeholder="example@gmail.com" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label style="color: #ddd; display: block; margin-bottom: 5px;">Таны зурвас</label>
+                <textarea rows="4" placeholder="Энд бичнэ үү..." style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;"></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%; text-align: center; cursor: pointer;">Илгээх</button>
+        </form>
+    </div>
+</div>
+
+<footer class="Footer" style="position: relative; margin-top: 40px;"><p>Cinemania © 2026. Бүх эрх хуулиар хамгаалагдсан.</p></footer>
+<script>document.getElementById('date-display').innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();</script>
+</body>
+</html>

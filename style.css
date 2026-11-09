@@ -1,0 +1,203 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #141414;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* Дээд цэс */
+.undsen-tses {
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 2px solid #ffc107;
+}
+
+.site-logo {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffc107;
+    text-decoration: none;
+}
+
+.site-logo img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.list-pages {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.list-pages li a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.list-pages li a:hover,
+.list-pages li a.active {
+    color: #ffc107;
+}
+
+/* Үндсэн агуулга болон Картууд */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.banner {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.banner h1 {
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+
+.banner p {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+/* btn товчлуурыг илүү цэгцтэй болгов */
+.btn {
+    background-color: #ffc107;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #e0a800;
+}
+
+.garchig {
+    color: #ffc107;
+    margin-bottom: 20px;
+}
+
+.kino-suljee {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Киноны картын бүтцийг Flexbox болгож өөрчлөх */
+.movie-card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 6px;
+    width: calc(33.333% - 14px);
+    padding: 15px;
+    transition: 0.3s;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffc107;
+}
+
+/* Киноны зургийн загвар */
+.movie-card img {
+    width: 100%;
+    height: 180px; /* Зургийн өндрийг бүгдийг нь ижил болгоно */
+    object-fit: cover; /* Зурах гажихгүйгээр хүрээндээ таарна */
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+.movie-title {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+.movie-news {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 15px;
+    flex-grow: 1; 
+}
+
+/* Хөл хэсэг */
+.Footer {
+    background-color: #1f1f1f;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    margin-top: 60px;
+}
+
+/* ==========================================
+   Responsive тохиргоо (Утас болон Таблет)
+   ========================================== */
+
+/* 1. Планшет буюу Таблет дээр (992px-ээс бага дэлгэцтэй) */
+@media (max-width: 992px) {
+    .container {
+        max-width: 90%;
+        margin: 20px auto;
+    }
+
+    .movie-card {
+        width: calc(50% - 10px); 
+    }
+}
+
+/* 2. Гар утас дээр (600px-ээс бага дэлгэцтэй) */
+@media (max-width: 600px) {
+    .undsen-tses {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .list-pages {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 15px;
+    }
+
+    .movie-card {
+        width: 100%; 
+    }
+
+    .banner {
+        padding: 20px;
+    }
+
+    .banner h1 {
+        font-size: 20px;
+    }
+}
