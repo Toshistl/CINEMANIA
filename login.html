@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Cinemania - Нэвтрэх & Бүртгүүлэх</title>
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="icon" type="image/jpeg" href="logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="undsen-tses">
-    <a href="index.html" class="site-logo"><img src="logo.jpg" alt="Logo"> CINEMANIA</a>
+    <a href="index.html" class="site-logo"><img src="logo.png" alt="Logo"> CINEMANIA</a>
     <ul class="list-pages">
         <li><a href="index.html">Нүүр</a></li>
         <li><a href="movies.html">Кино</a></li>
@@ -25,7 +25,7 @@
     </div>
 </nav>
 
-<div class="container" style="max-width: 450px; margin-top: 40px;">
+<div class="container" style="max-width: 500px; margin-top: 40px;">
     
     <div id="main-card" style="background: #1f1f1f; padding: 30px; border-radius: 8px; border: 1px solid #333;">
         
@@ -42,19 +42,20 @@
             <form onsubmit="burtgeh(event)">
                 <div style="margin-bottom: 15px;">
                     <label style="color: #ddd; display: block; margin-bottom: 5px;">Хэрэглэгчийн нэр</label>
-                    <input type="text" id="b-ner" placeholder="Нэрээ оруулна уу" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                    <input type="text" id="b-ner" placeholder="Нэрээ оруулна уу" style="width: 400px; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label style="color: #ddd; display: block; margin-bottom: 5px;">И-мэйл хаяг</label>
-                    <input type="email" id="b-email" placeholder="example@gmail.com" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                    <input type="email" id="b-email" placeholder="example@gmail.com" style="width: 400px; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
                 </div>
                 <div style="margin-bottom: 20px;">
                     <label style="color: #ddd; display: block; margin-bottom: 5px;">Нууц үг</label>
-                    <input type="password" id="b-nuuts" placeholder="********" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                    <input type="password" id="b-nuuts" placeholder="********" style="width: 400px; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
                 </div>
                 <button type="submit" class="btn" style="width: 100%; text-align: center; cursor: pointer;">Бүртгүүлэх</button>
             </form>
         </div>
+        
 
         <!-- 2. НЭВТРЭХ ХЭСЭГ (Түр нуугдсан байна) -->
         <div id="nevtreh-sec" style="display: none;">
@@ -63,24 +64,26 @@
             <form onsubmit="nevtreh(event)">
                 <div style="margin-bottom: 15px;">
                     <label style="color: #ddd; display: block; margin-bottom: 5px;">И-мэйл хаяг</label>
-                    <input type="email" id="n-email" placeholder="example@gmail.com" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                    <input type="email" id="n-email" placeholder="example@gmail.com" style="width: 400px; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
                 </div>
                 <div style="margin-bottom: 20px;">
                     <label style="color: #ddd; display: block; margin-bottom: 5px;">Нууц үг</label>
-                    <input type="password" id="n-nuuts" placeholder="********" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                    <input type="password" id="n-nuuts" placeholder="********" style="width: 400px; padding: 10px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
                 </div>
                 <button type="submit" class="btn" style="width: 100%; text-align: center; cursor: pointer;">Нэвтрэх</button>
             </form>
         </div>
 
         <!-- 3. АККАУНТ ПРЕВЬЮ ХЭСЭГ (Нэвтэрсний дараа гарч ирнэ) -->
-        <div id="profile-sec" style="display: none; text-align: center; padding: 10px;">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Profile" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 2px solid #ffc107;">
+        <div id="profile-sec" style="display: none; text-align: center; padding: 10px; width: 380px; margin: 0 auto;">
+            <img src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Profile" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 2px solid #ffc107;">
             <h3 id="p-ner" style="color: #ffc107; margin-bottom: 5px;"></h3>
             <p id="p-email" style="color: #aaa; font-size: 14px; margin-bottom: 20px;"></p>
-            
+            <br>
+            <br>
+            <br>
             <div style="background: #2a2a2a; padding: 15px; border-radius: 6px; text-align: left; margin-bottom: 20px;">
-                <p style="color: #ddd; font-size: 14px; margin-bottom: 5px;"><strong>Сайтын статус:</strong> Гишүүн (VIP)</p>
+                <p style="color: #ddd; font-size: 14px; margin-bottom: 5px;"><strong>Сайтын статус:</strong> Гишүүн</p>
                 <p style="color: #ddd; font-size: 14px;"><strong>Үзсэн кинонуудын тоо:</strong> 0</p>
             </div>
             
@@ -90,8 +93,8 @@
     </div>
 
 </div>
-
-<footer class="Footer" style="margin-top: 50px;"><p>Cinemania © 2026. Бүх эрх хуулиар хамгаалагдсан.</p></footer>
+<br><br>
+<footer class="Footer" style="margin-top: 50px;"><p>Cinemania © 2026.  </p></footer>
 
 <script>
 // Огноо гаргах

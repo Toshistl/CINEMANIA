@@ -1,13 +1,20 @@
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* 1. Энд html болон body-г бүтэн дэлгэцийн өндөртэй болгож Flexbox болгов */
+html, body {
+    height: 100%;
 }
 
 body {
     background-color: #141414;
     color: #ffffff;
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Дээд цэс */
@@ -59,6 +66,7 @@ body {
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
+    flex: 1; /* 2. Энд container контент бага байсан ч footer-ийг доош түлхэнэ */
 }
 
 .banner {
@@ -98,12 +106,12 @@ body {
     background-color: #e0a800;
 }
 
-.garchig {
+.Title {
     color: #ffc107;
     margin-bottom: 20px;
 }
 
-.kino-suljee {
+.movie-net {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
@@ -148,19 +156,23 @@ body {
     flex-grow: 1; 
 }
 
-/* Хөл хэсэг */
-.Footer {
+body footer.Footer {
     background-color: #1f1f1f;
-    color: #aaa;
+    color: #888;
     text-align: center;
-    padding: 20px 0;
+    padding: 25px 20px;
+    margin-top: auto; /* 3. Энд margin-top-ийг auto болгосноор ямагт хамгийн доор очно */
     border-top: 1px solid #333;
-    margin-top: 60px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* ==========================================
-   Responsive тохиргоо (Утас болон Таблет)
-   ========================================== */
+body footer.Footer p {
+    margin: 0;
+    color: #888;
+}
+
 
 /* 1. Планшет буюу Таблет дээр (992px-ээс бага дэлгэцтэй) */
 @media (max-width: 992px) {
