@@ -67,6 +67,7 @@ body {
 
 /* Үндсэн агуулга болон Картууд */
 .container {
+    width:100%;
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
@@ -194,7 +195,6 @@ body footer.Footer p {
     margin-bottom: 10px;
 }
 
-/* 16:9 харьцаатай, дэлгэцийн өргөнд өөрөө тохирно */
 .video-wrap {
     position: relative;
     width: 100%;
