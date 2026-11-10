@@ -5,8 +5,12 @@
 }
 
 /* 1. Энд html болон body-г бүтэн дэлгэцийн өндөртэй болгож Flexbox болгов */
-html, body {
+html {
     height: 100%;
+}
+
+body {
+    min-height: 100%;
 }
 
 body {
@@ -174,19 +178,19 @@ body footer.Footer p {
 }
 
 
-/* 1. Планшет буюу Таблет дээр (992px-ээс бага дэлгэцтэй) */
+/* 1. Планшет (992px ба түүнээс бага) */
 @media (max-width: 992px) {
     .container {
-        max-width: 90%;
+        max-width: 100%;
         margin: 20px auto;
     }
 
     .movie-card {
-        width: calc(50% - 10px); 
+        width: calc(50% - 10px); /* 2 багана */
     }
 }
 
-/* 2. Гар утас дээр (600px-ээс бага дэлгэцтэй) */
+/* 2. Гар утас (600px ба түүнээс бага) */
 @media (max-width: 600px) {
     .undsen-tses {
         flex-direction: column;
@@ -195,21 +199,48 @@ body footer.Footer p {
         padding: 15px;
     }
 
+    .site-logo {
+        font-size: 18px;
+    }
+
     .list-pages {
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px 15px;
     }
 
+    .container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .movie-net {
+        gap: 15px;
+    }
+
     .movie-card {
-        width: 100%; 
+        width: 100%; /* 1 багана */
+    }
+
+    .movie-card img {
+        height: 200px;
     }
 
     .banner {
         padding: 20px;
+        margin-bottom: 25px;
     }
 
     .banner h1 {
         font-size: 20px;
+    }
+
+    .banner p {
+        font-size: 14px;
+    }
+
+    body footer.Footer {
+        padding: 20px 15px;
+        font-size: 13px;
     }
 }
