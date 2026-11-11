@@ -175,6 +175,7 @@ function showNevtreh() {
     document.getElementById('tab-burtgel-btn').style.borderBottom = 'none';
 }
 
+// 1. Бүртгүүлэх үед мэдээллийг localStorage-д хадгалах
 function burtgeh(event) {
     event.preventDefault();
     let ner = document.getElementById('b-ner').value;
@@ -192,7 +193,7 @@ function burtgeh(event) {
         msg.style.color = "red";
         msg.innerText = "Нууц үгээ оруулна уу!";
     } else {
-        // мэдээллийг хөтчийн localStorage-д хадгалах
+        // Хэрэглэгчийн бүртгэлийн мэдээллийг хадгалах
         localStorage.setItem('cinemania_ner', ner);
         localStorage.setItem('cinemania_email', email);
         localStorage.setItem('cinemania_nuuts', nuuts);
@@ -206,13 +207,13 @@ function burtgeh(event) {
     }
 }
 
+// 2. Нэвтрэх үед шалгах
 function nevtreh(event) {
     event.preventDefault();
     let email = document.getElementById('n-email').value;
     let nuuts = document.getElementById('n-nuuts').value;
     let msg = document.getElementById('n-msg');
 
-    // localStorage-оос хадгалагдсан мэдээллийг дуудаж шалгах
     let storedEmail = localStorage.getItem('cinemania_email');
     let storedNuuts = localStorage.getItem('cinemania_nuuts');
     let storedNer = localStorage.getItem('cinemania_ner');
@@ -229,15 +230,24 @@ function nevtreh(event) {
     } else {
         if (email === storedEmail) {
             if (nuuts === storedNuuts) {
-                // Формуудыг нуух
+                // Амжилттай нэвтэрсэн төлөвийг тэмдэглэх флаг үүсгэх
+                localStorage.setItem('cinemania_logged_in', 'true');
+
                 document.getElementById('burtgel-sec').style.display = 'none';
                 document.getElementById('nevtreh-sec').style.display = 'none';
                 document.getElementById('tab-buttons').style.display = 'none';
 
-                // Профайл хэсгийг гаргаж ирэх
                 document.getElementById('profile-sec').style.display = 'block';
                 document.getElementById('p-ner').innerText = storedNer;
                 document.getElementById('p-email').innerText = storedEmail;
+
+                let storedAvatar = localStorage.getItem('cinemania_avatar');
+                if (storedAvatar) {
+                    document.getElementById('p-avatar-img').src = storedAvatar;
+                }
+
+                let watchedMovies = localStorage.getItem('cinemania_watched_count') || 0;
+                document.getElementById('watched-count').innerText = watchedMovies;
             } else {
                 msg.style.color = "red";
                 msg.innerText = "Нууц үг буруу байна!";
@@ -249,6 +259,43 @@ function nevtreh(event) {
     }
 }
 
+// 3. Системээс гарах (ЗӨВХӨН нэвтэрсэн төлөвийг арилгана, БҮРТГЭЛ устахгүй)
+function garah() {
+    // Бүртгэлийг устгалгүйгээр зөвхөн нэвтэрсэн төлөвийг л арилгана
+    localStorage.removeItem('cinemania_logged_in');
+    
+    // Хуудсыг дахин ачаалж цэвэр нэвтрэх хэсэг рүү оруулна
+    window.location.reload();
+}
+
+// 4. Хуудас ачаалагдах үед шалгах
+window.addEventListener('DOMContentLoaded', () => {
+    let isLoggedIn = localStorage.getItem('cinemania_logged_in');
+    let storedEmail = localStorage.getItem('cinemania_email');
+    let storedNer = localStorage.getItem('cinemania_ner');
+
+    // Хэрэв өмнө нь нэвтэрсэн хэвээрээ (log out хийгээгүй) байвал профайлыг шууд харуулна
+    if (isLoggedIn === 'true' && savedEmail && storedNer) {
+        document.getElementById('burtgel-sec').style.display = 'none';
+        document.getElementById('nevtreh-sec').style.display = 'none';
+        document.getElementById('tab-buttons').style.display = 'none';
+
+        document.getElementById('profile-sec').style.display = 'block';
+        document.getElementById('p-ner').innerText = storedNer;
+        document.getElementById('p-email').innerText = storedEmail;
+
+        let storedAvatar = localStorage.getItem('cinemania_avatar');
+        if (storedAvatar) {
+            document.getElementById('p-avatar-img').src = storedAvatar;
+        }
+
+        let watchedMovies = localStorage.getItem('cinemania_watched_count') || 0;
+        document.getElementById('watched-count').innerText = watchedMovies;
+    } else {
+        // Гаргасан эсвэл анх орж ирж байгаа бол Нэвтрэх форм руу чиглүүлнэ
+        showNevtreh();
+    }
+});
 // Профайл зураг солих функц
 function changeAvatar() {
     let newUrl = document.getElementById('avatar-url-input').value.trim();
@@ -266,21 +313,6 @@ function changeAvatar() {
     if (storedAvatar) {
         document.getElementById('p-avatar-img').src = storedAvatar;
     }
-
-    // Үзсэн киноны тоог харуулах хэсэг:
-    let watchedMovies = localStorage.getItem('cinemania_watched_count') || 0;
-        document.getElementById('watched-count').innerText = watchedMovies;
-function garah() {
-    // localStorage-оос бүх нэвтрэлтийн мэдээллийг устгах
-    localStorage.removeItem('cinemania_email');
-    localStorage.removeItem('cinemania_ner');
-    localStorage.removeItem('cinemania_nuuts');
-    localStorage.removeItem('cinemania_avatar');
-    
-    // Хуудсыг дахин ачаалж цэвэр төлөвт нь оруулах
-    window.location.reload();
-}
-
 </script>
 
 </body>
