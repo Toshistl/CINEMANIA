@@ -74,17 +74,27 @@
             </form>
         </div>
 
-        <div id="profile-sec" class="profile-sec" style="display: none;">
-            <img class="profile-avatar" src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Profile" style="width: 100px; height: 100px; border-radius: 50%; display: block; margin: 0 auto 15px auto;">
-            <h3 id="p-ner"></h3>
-            <p id="p-email"></p>
-
-            <div class="profile-info">
-                <p><strong>Сайтын статус:</strong> Гишүүн</p>
-                <p><strong>Үзсэн кинонуудын тоо:</strong> 0</p>
+        <!-- Профайл хэсэг -->
+        <div id="profile-sec" class="profile-sec" style="display: none; text-align: center;">
+            <!-- Профайл зураг -->
+            <img id="p-avatar-img" class="profile-avatar" src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Profile" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto;">
+            
+            <!-- Зургаа солих хэсэг -->
+            <div style="margin-bottom: 15px;">
+                <input type="text" id="avatar-url-input" placeholder="Зургийн линк (URL) оруулах..." style="padding: 6px; width: 80%; font-size: 12px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
+                <button onclick="changeAvatar()" class="btn" style="padding: 6px 10px; font-size: 12px; margin-top: 5px; cursor: pointer;">Зураг солих</button>
             </div>
 
-            <button onclick="garah()" class="btn profile-logout">Системээс гарах</button>
+            <h3 id="p-ner" style="color: #ffc107; margin-bottom: 5px;"></h3>
+            <p id="p-email" style="color: #aaa; font-size: 14px; margin-bottom: 15px;"></p>
+
+            <div class="profile-info" style="background: #252525; padding: 12px; border-radius: 6px; margin-bottom: 20px; text-align: left;">
+                <p style="margin: 5px 0; color: #ddd;"><strong>Сайтын статус:</strong> Гишүүн</p>
+                <!-- Үзсэн кинонуудын тоог localStorage-оос авч харуулна -->
+                <p style="margin: 5px 0; color: #ddd;"><strong>Үзсэн кинонуудын тоо:</strong> <span id="watched-count" style="color: #ffc107; font-weight: bold;">0</span></p>
+            </div>
+
+            <button onclick="garah()" class="btn profile-logout" style="background: #d9534f; border: none; padding: 8px 15px; cursor: pointer; color: #fff; border-radius: 4px;">Системээс гарах</button>
         </div>
 
     </div>
@@ -96,9 +106,40 @@
 <script>
 document.getElementById('date-display').innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
 
-let savedNer = "";
-let savedEmail = "";
-let savedNuuts = "";
+// Хуудас ачаалагдахад хэрэглэгч аль хэдийн нэвтэрсэн эсэхийг шалгах
+window.addEventListener('DOMContentLoaded', () => {
+    let savedEmail = localStorage.getItem('cinemania_email');
+    let storedNer = localStorage.getItem('cinemania_ner');
+
+    if (savedEmail && storedNer) {
+        // Хэрэв нэвтэрсэн байвал формаа нууж, профайлыг шууд гаргаж ирэх
+        document.getElementById('burtgel-sec').style.display = 'none';
+        document.getElementById('nevtreh-sec').style.display = 'none';
+        document.getElementById('tab-buttons').style.display = 'none';
+
+        document.getElementById('profile-sec').style.display = 'block';
+        document.getElementById('p-ner').innerText = storedNer;
+        document.getElementById('p-email').innerText = savedEmail;
+
+        // Хэрэв профайл зураг хадгалагдсан байвал оруулах
+        let storedAvatar = localStorage.getItem('cinemania_avatar');
+        if (storedAvatar) {
+            document.getElementById('p-avatar-img').src = storedAvatar;
+        }
+
+        // Үзсэн киноны тоог харуулах
+        let watchedMovies = localStorage.getItem('cinemania_watched_count') || 0;
+        document.getElementById('watched-count').innerText = watchedMovies;
+    }
+});
+// Хуудас ачаалагдахад өмнө нь бүртгүүлсэн хэрэглэгч байгаа эсэхийг шалгах
+window.onload = function() {
+    let savedEmail = localStorage.getItem('cinemania_email');
+    if (savedEmail) {
+        // Хэрэв өмнө нь бүртгүүлсэн байвал шууд нэвтрэх хэсэг рүү чиглүүлэх эсвэл бэлтгэх
+        console.log("Бүртгэлтэй хэрэглэгч байна.");
+    }
+};
 
 function showBurtgel() {
     document.getElementById('burtgel-sec').style.display = 'block';
@@ -135,14 +176,14 @@ function burtgeh(event) {
         msg.style.color = "red";
         msg.innerText = "Нууц үгээ оруулна уу!";
     } else {
-        savedNer = ner;
-        savedEmail = email;
-        savedNuuts = nuuts;
+        // мэдээллийг хөтчийн localStorage-д хадгалах
+        localStorage.setItem('cinemania_ner', ner);
+        localStorage.setItem('cinemania_email', email);
+        localStorage.setItem('cinemania_nuuts', nuuts);
         
         msg.style.color = "green";
         msg.innerText = "Амжилттай бүртгэгдлээ! Нэвтрэх хэсэг рүү шилжиж байна...";
         
-        // 1 секундээс нэвтрэх хэсэг рүү өөрөө шилжүүлнэ
         setTimeout(function() {
             showNevtreh();
         }, 1000);
@@ -155,7 +196,12 @@ function nevtreh(event) {
     let nuuts = document.getElementById('n-nuuts').value;
     let msg = document.getElementById('n-msg');
 
-    if (savedEmail == "") {
+    // localStorage-оос хадгалагдсан мэдээллийг дуудаж шалгах
+    let storedEmail = localStorage.getItem('cinemania_email');
+    let storedNuuts = localStorage.getItem('cinemania_nuuts');
+    let storedNer = localStorage.getItem('cinemania_ner');
+
+    if (!storedEmail) {
         msg.style.color = "red";
         msg.innerText = "Бүртгэлтэй хэрэглэгч олдсонгүй. Эхлээд бүртгүүлнэ үү!";
     } else if (email == "") {
@@ -165,17 +211,17 @@ function nevtreh(event) {
         msg.style.color = "red";
         msg.innerText = "Нууц үгээ оруулна уу!";
     } else {
-        if (email == savedEmail) {
-            if (nuuts == savedNuuts) {
-                // Бүртгэл, нэвтрэх хэсэг болон таб товчлууруудыг бүгдийг нь нуух
+        if (email === storedEmail) {
+            if (nuuts === storedNuuts) {
+                // Формуудыг нуух
                 document.getElementById('burtgel-sec').style.display = 'none';
                 document.getElementById('nevtreh-sec').style.display = 'none';
                 document.getElementById('tab-buttons').style.display = 'none';
 
-                // Аккаунт превью хэсгийг гаргаж ирэх
+                // Профайл хэсгийг гаргаж ирэх
                 document.getElementById('profile-sec').style.display = 'block';
-                document.getElementById('p-ner').innerText = savedNer;
-                document.getElementById('p-email').innerText = savedEmail;
+                document.getElementById('p-ner').innerText = storedNer;
+                document.getElementById('p-email').innerText = storedEmail;
             } else {
                 msg.style.color = "red";
                 msg.innerText = "Нууц үг буруу байна!";
@@ -187,8 +233,29 @@ function nevtreh(event) {
     }
 }
 
+// Профайл зураг солих функц
+function changeAvatar() {
+    let newUrl = document.getElementById('avatar-url-input').value.trim();
+    if (newUrl !== "") {
+        localStorage.setItem('cinemania_avatar', newUrl);
+        document.getElementById('p-avatar-img').src = newUrl;
+        document.getElementById('avatar-url-input').value = "";
+    } else {
+        alert("Зургийн линк оруулна уу!");
+    }
+}
+
+    // Нэвтрэх хэсэг дотор (nevtreh функц дотор амжилттай нэвтэрсний дараа):
+    let storedAvatar = localStorage.getItem('cinemania_avatar');
+    if (storedAvatar) {
+        document.getElementById('p-avatar-img').src = storedAvatar;
+    }
+
+    // Үзсэн киноны тоог харуулах хэсэг:
+    let watchedMovies = localStorage.getItem('cinemania_watched_count') || 0;
+        document.getElementById('watched-count').innerText = watchedMovies;
 function garah() {
-    // Буцаагаад формыг гаргаж ирнэ
+    // Системээс гарах товч дарахад профайлыг хааж, нэвтрэх хэсэг рүү оруулах
     document.getElementById('profile-sec').style.display = 'none';
     document.getElementById('tab-buttons').style.display = 'flex';
     showNevtreh();
