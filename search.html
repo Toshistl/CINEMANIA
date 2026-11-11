@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemania - Хайлтын үр дүн</title>
+    <link rel="icon" type="image/png" href="logo-v2.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="undsen-tses">
+    <a href="index.html" class="site-logo"><img src="logo-v2.png" alt="Logo"> CINEMANIA</a>
+    <ul class="list-pages">
+        <li><a href="index.html">Нүүр</a></li>
+        <li><a href="movies.html">Кино</a></li>
+        <li><a href="series.html">Сериал</a></li>
+        <li><a href="trailers.html">Трейлер</a></li>
+        <li><a href="top-rated.html">Топ 10</a></li>
+        <li><a href="actors.html">Жүжигчид</a></li>
+        <li><a href="contact.html">Холбоо барих</a></li>
+    </ul>
+    <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
+</nav>
+
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+        <h2 class="Title" style="color: #ffc107; margin: 0;"></h2>
+        
+        <!-- Баруун дээд буланд байрлах хайлтын хэсэг -->
+        <form action="search.html" method="GET" style="display: flex; gap: 8px;">
+            <input type="text" name="q" placeholder="Кино, сериал хайх..." style="padding: 8px 14px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px; outline: none; font-size: 14px; min-width: 200px;">
+            <button type="submit" class="btn" style="padding: 8px 16px; cursor: pointer;">Хайх</button>
+        </form>
+    </div>
+    <h2 id="search-title" class="Title" style="color: #ffc107; margin-bottom: 25px;">Хайлтын үр дүн</h2>
+    
+    <!-- Хайлтын үр дүнг байрлуулах сүлжээ хэсэг -->
+    <div id="search-results" class="movie-net" style="display: flex; flex-wrap: wrap; gap: 20px;">
+        <!-- JavaScript-ээр үр дүн энд автоматаар орж ирнэ -->
+    </div>
+</div>
+
+<footer class="Footer" style="text-align: center; margin-top: 40px; padding: 20px; background: #1f1f1f; border-top: 1px solid #333; color: #888;">
+    <p>Cinemania © 2026. Бүх эрх хуулиар хамгаалагдсан.</p>
+</footer>
+
+<script>
+    let dateElement = document.getElementById('date-display');
+    if (dateElement) {
+        let today = new Date();
+        dateElement.innerText = today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
+    }
+
+    // Сайт дээрх бүх кино болон сериалуудын сан
+    let allMediaItems = [
+        // Кинонууд
+        { title: "12 Angry Men", type: "Кино", year: "1957", img: "https://image.tmdb.org/t/p/w500/ow3wq89wM893kS89dS9k2.jpg", link: "movie-12angrymen.html" },
+        { title: "Avatar", type: "Кино", year: "2009", img: "https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg", link: "movie-avatar1.html" },
+        { title: "Avatar The Way of Water", type: "Кино", year: "2022", img: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg", link: "movie-avatar2.html" },
+        { title: "Avatar Fire and Ash", type: "Кино", year: "2025", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvSyjPMAY2ULVNuDooPCkdl_N_LXOIVY7n9MaGTntB_W1zmtd15nybOINZ&s=10", link: "movie-avatar3.html" },
+        { title: "Avengers: Infinity War", type: "Кино", year: "2012", img: "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", link: "movie-avengers.html" },
+        { title: "The Dark Knight", type: "Кино", year: "2008", img: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", link: "movie-darkknight.html" },
+        { title: "Dune", type: "Кино", year: "2021", img: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg", link: "movie-dune.html" },
+        { title: "Dune Part Two", type: "Кино", year: "2024", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHtBGsnxOoEQAsboEspaPoElQT-Z4wtTikQ45Hrb3x_6NvjOw607ZrPxk&s=10", link: "movie-dune2.html" },
+        { title: "Fight Club", type: "Кино", year: "1999", img: "https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg", link: "movie-fightclub.html" },
+        { title: "Forrest Gump", type: "Кино", year: "1994", img: "https://m.media-amazon.com/images/I/718o2FI-a0L.jpg", link: "movie-forrestgump.html" },
+        { title: "Gladiator", type: "Кино", year: "2000", img: "https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg", link: "movie-gladiator.html" },
+        { title: "The Godfather", type: "Кино", year: "1972", img: "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg", link: "movie-godfather.html" },
+        { title: "The Godfather Part II", type: "Кино", year: "1974", img: "https://s3.amazonaws.com/nightjarprod/content/uploads/sites/130/2024/05/26174213/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg", link: "movie-godfather2.html" },
+        { title: "Inception", type: "Кино", year: "2010", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4bwHpXomox-Qv9anWQ26grQFEx4vFXAiZ55hIQBozG-jUqfaNRfPbUgVk&s=10", link: "movie-inception.html" },
+        { title: "Interstellar", type: "Кино", year: "2014", img: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg", link: "movie-interstellar.html" },
+        { title: "Joker", type: "Кино", year: "2019", img: "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg", link: "movie-joker.html" },
+        { title: "The Lord of the Rings", type: "Кино", year: "2003", img: "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg", link: "movie-lotr.html" },
+        { title: "The Martian", type: "Кино", year: "2015", img: "https://image.tmdb.org/t/p/w500/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg", link: "movie-martian.html" },
+        { title: "The Matrix", type: "Кино", year: "1999", img: "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg", link: "movie-matrix.html" },
+        { title: "Oppenheimer", type: "Кино", year: "2023", img: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg", link: "movie-oppenheimer.html" },
+        { title: "Pulp Fiction", type: "Кино", year: "1994", img: "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg", link: "movie-pulpfiction.html" },
+        { title: "Schindler's List", type: "Кино", year: "1993", img: "https://m.media-amazon.com/images/M/MV5BNjM1ZDQxYWUtMzQyZS00MTE1LWJmZGYtNGUyNTdlYjM3ZmVmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg", link: "movie-schindlerslist.html" },
+        { title: "The Shawshank Redemption", type: "Кино", year: "1994", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtPEoFdg7lABReGIt_LjGfJSkGS-FAPn5ehXKWyxUfh9_WPygiXcDju4E&s=10", link: "movie-shawshank.html" },
+        { title: "Shutter Island", type: "Кино", year: "2010", img: "https://image.tmdb.org/t/p/w500/kve20tXwUZpu4Dpx8lUSy7iqzQA.jpg", link: "movie-shutterisland.html" },
+        { title: "Spider-Man: No way home", type: "Кино", year: "2021", img: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", link: "movie-spiderman.html" },
+        { title: "Tenet", type: "Кино", year: "2020", img: "https://image.tmdb.org/t/p/w500/k68nPLbIST6NP96JmTxmZijEvCA.jpg", link: "movie-tenet.html" },
+        { title: "Titanic", type: "Кино", year: "1997", img: "https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", link: "movie-titanic.html" },
+
+        // Сериалууд
+        { title: "Breaking Bad", type: "Сериал", year: "2008", img: "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg", link: "series-breakingbad.html" },
+        { title: "Chernobyl", type: "Сериал", year: "2019", img: "https://image.tmdb.org/t/p/original/wwt3HgxspH65msWspi3PDABU834.jpg", link: "series-chernobyl.html" },
+        { title: "Game of Thrones", type: "Сериал", year: "2011", img: "https://image.tmdb.org/t/p/w500/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg", link: "series-got.html" },
+        { title: "The Last of Us", type: "Сериал", year: "2023", img: "https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg", link: "series-lastofus.html" },
+        { title: "Money Heist", type: "Сериал", year: "2017", img: "https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg", link: "series-moneyheist.html" },
+        { title: "Peaky Blinders", type: "Сериал", year: "2013", img: "https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg", link: "series-peakyblinders.html" },
+        { title: "Severance", type: "Сериал", year: "2022", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2F3hwG792pPK0hm9wfQZSVRL1py47HCeBNjvieAy_CXSBowgDVcidg4A&s=10", link: "series-severance.html" },
+        { title: "Sherlock", type: "Сериал", year: "2010", img: "https://cdn.europosters.eu/image/750/33910.jpg", link: "series-sherlock.html" },
+        { title: "Squid Game", type: "Сериал", year: "2021", img: "https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg", link: "series-squidgame.html" },
+        { title: "Stranger Things", type: "Сериал", year: "2016", img: "https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg", link: "series-strangerthings.html" },
+        { title: "The Bear", type: "Сериал", year: "2022", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_bgvyNi7KbJGt2r9gGf8L8wQez405zuGtHUcz7Mem_6L5Ga1XbSuHU10&s=10", link: "series-the-bear.html" },
+        { title: "The Witcher", type: "Сериал", year: "2019", img: "https://image.tmdb.org/t/p/w500/7vjaCdMw15FEbXyLQTVa04URsPm.jpg", link: "series-thewitcher.html" }
+    ];
+
+    let urlParams = new URLSearchParams(window.location.search);
+    let searchQuery = urlParams.get('q') ? urlParams.get('q').trim().toLowerCase() : '';
+
+    let searchTitle = document.getElementById('search-title');
+    let searchResultsContainer = document.getElementById('search-results');
+
+    if (searchQuery) {
+        searchTitle.innerText = `"${urlParams.get('q')}" хайлтын үр дүн`;
+        
+        let filteredItems = allMediaItems.filter(item => item.title.toLowerCase().includes(searchQuery));
+
+        if (filteredItems.length > 0) {
+            filteredItems.forEach(item => {
+                let card = document.createElement('div');
+                card.className = 'movie-card';
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.title}">
+                    <h3 class="movie-title">${item.title}</h3>
+                    <p class="movie-news">${item.type} | ${item.year}</p>
+                    <a href="${item.link}" class="btn">Дэлгэрэнгүй</a>
+                `;
+                searchResultsContainer.appendChild(card);
+            });
+        } else {
+            searchResultsContainer.innerHTML = `<p style="color: #aaa; font-size: 16px;">Ямар нэгэн үр дүн олдсонгүй.</p>`;
+        }
+    } else {
+        searchTitle.innerText = "Хайлтын утга хоосон байна.";
+        searchResultsContainer.innerHTML = `<p style="color: #aaa; font-size: 16px;">Хайх үг оруулна уу.</p>`;
+    }
+</script>
+</body>
+</html>
