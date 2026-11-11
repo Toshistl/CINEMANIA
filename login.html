@@ -271,11 +271,16 @@ function changeAvatar() {
     let watchedMovies = localStorage.getItem('cinemania_watched_count') || 0;
         document.getElementById('watched-count').innerText = watchedMovies;
 function garah() {
-    // Системээс гарах товч дарахад профайлыг хааж, нэвтрэх хэсэг рүү оруулах
-    document.getElementById('profile-sec').style.display = 'none';
-    document.getElementById('tab-buttons').style.display = 'flex';
-    showNevtreh();
+    // localStorage-оос бүх нэвтрэлтийн мэдээллийг устгах
+    localStorage.removeItem('cinemania_email');
+    localStorage.removeItem('cinemania_ner');
+    localStorage.removeItem('cinemania_nuuts');
+    localStorage.removeItem('cinemania_avatar');
+    
+    // Хуудсыг дахин ачаалж цэвэр төлөвт нь оруулах
+    window.location.reload();
 }
+
 </script>
 
 </body>
