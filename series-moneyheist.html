@@ -21,20 +21,65 @@
     </ul>
     <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
 </nav>
+
 <div class="container">
-    <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 280px;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFzlqSefKXo2H2-1L0WZ8zOG9-DElGR9SKegBmKWkQ0co-DXQWrT4WR-DY&s=10" alt="Money Heist" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
+    <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
+        <div style="flex: 1; min-width: 280px;"><img src="https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg" alt="Money Heist" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
                 <h1 style="color: #ffc107; margin-bottom: 15px;">Money Heist</h1>
-                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Гэмт хэрэг, Триллэр | <strong>Бүлэг:</strong> 5 | <strong>Үнэлгээ:</strong> 8.2/10</p>
-                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Профессор болон түүний багаас Испанийн Мөнгөний Үйлдвэрт хийсэн томоохон дээрэм.</p>
+                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Гэмт хэрэг, Триллер | <strong>Үнэлгээ:</strong> 8.2/10</p>
+                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">"Профессор" гэх нууцлаг залуугийн удирдлага дор бүлэг гэмт хэрэгтнүүд Испанийн төв банк болон мөнгөн дэвсгэр хэвлэх үйлдвэрийг дээрэмдэх төлөвлөгөөг хэрэгжүүлнэ.</p>
             </div>
             <div><a href="series.html" class="btn">Буцах</a></div>
         </div>
     </div>
+
+    <div class="video-card">
+        <h3 style="color: #ffc107; margin-bottom: 15px;">Сериал үзэх</h3>
+        <div class="video-wrap" style="margin-bottom: 20px;">
+            <iframe id="series-player" src="https://vidsrc.me/embed/tv?tmdb=71446&season=1&episode=1" width="100%" height="450px" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+        </div>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+            <label style="color: #aaa;">Улирал: 
+                <select id="season-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;">
+                    <option value="1">Улирал 1</option>
+                    <option value="2">Улирал 2</option>
+                    <option value="3">Улирал 3</option>
+                    <option value="4">Улирал 4</option>
+                    <option value="5">Улирал 5</option>
+                </select>
+            </label>
+            <label style="color: #aaa;">Анги: 
+                <select id="episode-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;">
+                    <option value="1">1-р анги</option>
+                    <option value="2">2-р анги</option>
+                    <option value="3">3-р анги</option>
+                    <option value="4">4-р анги</option>
+                    <option value="5">5-р анги</option>
+                </select>
+            </label>
+            <button id="play-btn" class="btn" style="padding: 6px 16px;">Үзэх</button>
+        </div>
+    </div>
 </div>
-<footer class="Footer"><p>Cinemania © 2026.  </p></footer>
-<script>document.getElementById('date-display').innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();</script>
+
+<footer class="Footer"><p>Cinemania © 2026. </p></footer>
+<script>
+let dateElement = document.getElementById('date-display');
+dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
+
+let tmdbId = 71446;
+let seriesPlayer = document.getElementById('series-player');
+let seasonSelect = document.getElementById('season-select');
+let episodeSelect = document.getElementById('episode-select');
+let playBtn = document.getElementById('play-btn');
+
+playBtn.addEventListener('click', function() {
+    let season = seasonSelect.value;
+    let episode = episodeSelect.value;
+    seriesPlayer.src = `https://vidsrc.me/embed/tv?tmdb=${tmdbId}&season=${season}&episode=${episode}`;
+});
+</script>
 </body>
 </html>

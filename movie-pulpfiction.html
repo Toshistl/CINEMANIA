@@ -22,21 +22,26 @@
     <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
 </nav>
 <div class="container">
-    <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 280px;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7_V0wVdwn4pYXLW5nJx5Vb4TtrOXfzNDLoXxBqlxQ3Q&s=10" alt="Pulp Fiction" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
+    <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
+        <div style="flex: 1; min-width: 280px;"><img src="https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg" alt="Pulp Fiction" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
                 <h1 style="color: #ffc107; margin-bottom: 15px;">Pulp Fiction</h1>
-                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Гэмт хэрэг, Драма | <strong>Он:</strong> 1994 | <strong>Үнэлгээ:</strong> 8.9/10</p>
-                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Лос-Анжелесийн гэмт хэргийн ертөнц дэх хэд хэдэн сонирхолтой түүхийн огтлолцол.</p>
+                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Гэмт хэрэг | <strong>Он:</strong> 1994 | <strong>Үнэлгээ:</strong> 8.5/10</p>
+                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Гэмт хэргийн ертөнцийн сонирхолтой түүхүүд.</p>
             </div>
-            <div style="margin-top: 25px">
-                <a href="movies.html" class="btn">Буцах</a>
-            </div>
+            <div><a href="movies.html" class="btn">Буцах</a></div>
         </div>
     </div>
+    <div class="video-card">
+        <h3 style="color: #ffc107; margin-bottom: 15px;">Кино үзэх</h3>
+        <div class="video-wrap"><iframe id="movie-player" src="https://vidsrc.me/embed/movie?tmdb=680" width="100%" height="450px" style="border: none; border-radius: 6px;" allowfullscreen></iframe></div>
+    </div>
 </div>
-<footer class="Footer"><p>Cinemania © 2026.  </p></footer>
-<script>document.getElementById('date-display').innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();</script>
+<footer class="Footer"><p>Cinemania © 2026. </p></footer>
+<script>
+let dateElement = document.getElementById('date-display');
+dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
+</script>
 </body>
 </html>
