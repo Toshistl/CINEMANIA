@@ -20,26 +20,30 @@
         <li><a href="contact.html">Холбоо барих</a></li>
     </ul>
     <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span>
-        <div id="auth-container">
-        <div id="auth-container">
+        <!-- Баруун дээд булангийн хэсэг -->
+<div id="auth-container">
     <a href="login.html" id="login-btn" class="btn">Нэвтрэх</a>
-            </div>
+</div>
 
-            <script>
-                let loggedUser = localStorage.getItem('cinemania_ner');
-                if (loggedUser) {
-                    let authContainer = document.getElementById('auth-container');
-                    authContainer.innerHTML = `
-                        <div style="display: inline-flex; align-items: center; gap: 10px;">
-                            <!-- Нэр дээр дарахад login.html руу буюу профайл руу орно -->
-                            <a href="login.html" style="color: #ffc107; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
-                                 ${loggedUser}
-                            </a> 
-                            <a href="login.html" onclick="localStorage.removeItem('cinemania_logged_in'); localStorage.removeItem('cinemania_ner'); localStorage.removeItem('cinemania_avatar');" class="btn" style="padding: 5px 12px; font-size: 13px; background: #d9534f; color: #fff; border-radius: 4px; text-decoration: none;">Гарах</a>
-                        </div>
-                    `;
-                }
-            </script>
+<script>
+    // LocalStorage-оос нэвтэрсэн эсэх болон хэрэглэгчийн нэрийг шалгах
+    let isLoggedIn = localStorage.getItem('cinemania_logged_in');
+    let loggedUser = localStorage.getItem('cinemania_ner');
+
+    if (isLoggedIn === 'true' && loggedUser) {
+        let authContainer = document.getElementById('auth-container');
+        authContainer.innerHTML = `
+            <div style="display: inline-flex; align-items: center; gap: 10px;">
+                <!-- Нэр дээр дарахад login.html (профайл) руу орно -->
+                <a href="login.html" style="color: #ffc107; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
+                    👤 ${loggedUser}
+                </a> 
+                <!-- Гарах товч дарахад зөвхөн нэвтэрсэн төлөвийг арилгана -->
+                <a href="login.html" onclick="localStorage.removeItem('cinemania_logged_in');" class="btn" style="padding: 5px 12px; font-size: 13px; background: #d9534f; color: #fff; border-radius: 4px; text-decoration: none;">Гарах</a>
+            </div>
+        `;
+    }
+</script>
         </div>
 </nav>
 
