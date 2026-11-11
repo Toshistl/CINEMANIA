@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemania - Dune: Part Two</title>
+    <link rel="icon" type="image/png" href="logo-v2.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="undsen-tses">
+    <a href="index.html" class="site-logo"><img src="logo-v2.png" alt="Logo"> CINEMANIA</a>
+    <ul class="list-pages">
+        <li><a href="index.html">Нүүр</a></li>
+        <li><a href="movies.html" class="active">Кино</a></li>
+        <li><a href="series.html">Сериал</a></li>
+        <li><a href="trailers.html">Трейлер</a></li>
+        <li><a href="top-rated.html">Топ 10</a></li>
+        <li><a href="actors.html">Жүжигчид</a></li>
+        <li><a href="contact.html">Холбоо барих</a></li>
+    </ul>
+    <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
+</nav>
+
+<div class="container">
+    <!-- Киноны мэдээлэл болон зураг -->
+    <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
+        <div style="flex: 1; min-width: 280px;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHtBGsnxOoEQAsboEspaPoElQT-Z4wtTikQ45Hrb3x_6NvjOw607ZrPxk&s=10" alt="Dune: Part Two" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
+        </div>
+        <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h1 style="color: #ffc107; margin-bottom: 15px;">Dune: Part Two</h1>
+                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Уран зөгнөлт, Шинжлэх ухаанч | <strong>Он:</strong> 2024 | <strong>Үнэлгээ:</strong> 8.6/10</p>
+                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">
+                    Пол Атрейдес Чани болон Фрименуудтай нэгдэж, түүнийг сүйрэлд хүргэсэн хуйвалдаанчдын эсрэг өшөө авах баатарлаг аянаа үргэлжлүүлж буй тухай өгүүлнэ. Тэрээр амьдралынхаа хайр болон орчлон ертөнцийн хувь заяаны хооронд сонголт хийх шаардлагатай тулгарна.
+                </p>
+            </div>
+            <div style="margin-top: 25px">
+                <a href="movies.html" class="btn">Буцах</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кино үзэх тоглуулагч хэсэг -->
+    <div class="video-card">
+        <h3 style="color: #ffc107; margin-bottom: 15px;">Кино үзэх</h3>
+        <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9;">
+            <iframe src="https://vidsrc.me/embed/movie?tmdb=693134" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<footer class="Footer" style="text-align: center; margin-top: 40px; padding: 20px; background: #1f1f1f; border-top: 1px solid #333; color: #888;">
+    <p>Cinemania © 2026. Бүх эрх хуулиар хамгаалагдсан.</p>
+</footer>
+
+<script>
+    let dateElement = document.getElementById('date-display');
+    if (dateElement) {
+        let today = new Date();
+        dateElement.innerText = today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
+    }
+</script>
+</body>
+</html>
