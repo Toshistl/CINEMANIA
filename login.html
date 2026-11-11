@@ -58,7 +58,6 @@
         </div>
         
 
-        <!-- 2. НЭВТРЭХ ХЭСЭГ (Түр нуугдсан байна) -->
         <div id="nevtreh-sec" style="display: none;">
             <h3 style="color: #fff; text-align: center; margin-bottom: 15px;">Системд нэвтрэх</h3>
             <p id="n-msg" style="text-align: center; margin-bottom: 15px; font-size: 14px;"></p>
@@ -75,20 +74,17 @@
             </form>
         </div>
 
-        <!-- 3. АККАУНТ ПРЕВЬЮ ХЭСЭГ (Нэвтэрсний дараа гарч ирнэ) -->
-        <div id="profile-sec" style="display: none; text-align: center; padding: 10px; width: 380px; margin: 0 auto;">
-            <img src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Profile" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 2px solid #ffc107;">
-            <h3 id="p-ner" style="color: #ffc107; margin-bottom: 5px;"></h3>
-            <p id="p-email" style="color: #aaa; font-size: 14px; margin-bottom: 20px;"></p>
-            <br>
-            <br>
-            <br>
-            <div style="background: #2a2a2a; padding: 15px; border-radius: 6px; text-align: left; margin-bottom: 20px;">
-                <p style="color: #ddd; font-size: 14px; margin-bottom: 5px;"><strong>Сайтын статус:</strong> Гишүүн</p>
-                <p style="color: #ddd; font-size: 14px;"><strong>Үзсэн кинонуудын тоо:</strong> 0</p>
+        <div id="profile-sec" class="profile-sec" style="display: none;">
+            <img class="profile-avatar" src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Profile" style="width: 100px; height: 100px; border-radius: 50%; display: block; margin: 0 auto 15px auto;">
+            <h3 id="p-ner"></h3>
+            <p id="p-email"></p>
+
+            <div class="profile-info">
+                <p><strong>Сайтын статус:</strong> Гишүүн</p>
+                <p><strong>Үзсэн кинонуудын тоо:</strong> 0</p>
             </div>
-            
-            <button onclick="garah()" class="btn" style="width: 100%; cursor: pointer;">Системээс гарах</button>
+
+            <button onclick="garah()" class="btn profile-logout">Системээс гарах</button>
         </div>
 
     </div>
@@ -98,15 +94,12 @@
 <footer class="Footer" style="margin-top: 50px;"><p>Cinemania © 2026.  </p></footer>
 
 <script>
-// Огноо гаргах
 document.getElementById('date-display').innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
 
-// Мэдээлэл хадгалах хувьсагчууд
 let savedNer = "";
 let savedEmail = "";
 let savedNuuts = "";
 
-// Таб солих функцүүд (Нэг хэсгийг харуулж, нөгөөг нууна)
 function showBurtgel() {
     document.getElementById('burtgel-sec').style.display = 'block';
     document.getElementById('nevtreh-sec').style.display = 'none';
@@ -125,7 +118,6 @@ function showNevtreh() {
     document.getElementById('tab-burtgel-btn').style.borderBottom = 'none';
 }
 
-// 1. БҮРТГҮҮЛЭХ
 function burtgeh(event) {
     event.preventDefault();
     let ner = document.getElementById('b-ner').value;
@@ -157,7 +149,6 @@ function burtgeh(event) {
     }
 }
 
-// 2. НЭВТРЭХ
 function nevtreh(event) {
     event.preventDefault();
     let email = document.getElementById('n-email').value;
@@ -196,7 +187,6 @@ function nevtreh(event) {
     }
 }
 
-// 3. ГАРАХ
 function garah() {
     // Буцаагаад формыг гаргаж ирнэ
     document.getElementById('profile-sec').style.display = 'none';
