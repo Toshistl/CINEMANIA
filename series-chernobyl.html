@@ -22,59 +22,60 @@
     <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
 </nav>
 
-<div class="container">
+<div class="container" style="margin-bottom: 60px;">
     <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
-        <div style="flex: 1; min-width: 280px;"><img src="https://image.tmdb.org/t/p/w500/hlLXt2StjVzO8vTDJkVMs9kbrko.jpg" alt="Chernobyl" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
+        <div style="flex: 1; min-width: 280px;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRuKQFFzfpr_XiBDAr8EPtIFCZ-ItyIIZCQ3FjZvnEINiY-PkNp7c5thHu&s=10" alt="Chernobyl" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
+        </div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
                 <h1 style="color: #ffc107; margin-bottom: 15px;">Chernobyl</h1>
-                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Драма, Түүхэн | <strong>Үнэлгээ:</strong> 8.6/10</p>
-                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">1986 онд ЗХУ-ын Чернобылийн АЦС-д гарсан аймшигт осол болон түүний үр дагаврыг арилгахаар тэмцсэн хүмүүсийн бодит түүх.</p>
+                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Драма, Түүхэн | <strong>Он:</strong> 2019 | <strong>Үнэлгээ:</strong> 9.4/10</p>
+                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">1986 онд Зөвлөлт Холбоот Улсад гарсан Чернобылийн атомын цахилгаан станцын осол болон үр дагаврыг арилгасан бодит түүх.</p>
             </div>
-            <div><a href="series.html" class="btn">Буцах</a></div>
+            <div style="margin-top: 25px"><a href="series.html" class="btn">Буцах</a></div>
         </div>
     </div>
 
-    <div class="video-card">
+    <div class="video-card" style="margin-bottom: 20px;">
         <h3 style="color: #ffc107; margin-bottom: 15px;">Сериал үзэх</h3>
-        <div class="video-wrap" style="margin-bottom: 20px;">
-            <iframe id="series-player" src="https://vidsrc.me/embed/tv?tmdb=87108&season=1&episode=1" width="100%" height="450px" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+        <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 20px;">
+            <iframe id="series-player-chernobyl" src="https://vidsrc.me/embed/tv?tmdb=87108&season=1&episode=1" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
         </div>
         <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
-            <label style="color: #aaa;">Улирал: 
-                <select id="season-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;">
-                    <option value="1">Улирал 1</option>
-                </select>
-            </label>
-            <label style="color: #aaa;">Анги: 
-                <select id="episode-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;">
-                    <option value="1">1-р анги</option>
-                    <option value="2">2-р анги</option>
-                    <option value="3">3-р анги</option>
-                    <option value="4">4-р анги</option>
-                    <option value="5">5-р анги</option>
-                </select>
-            </label>
-            <button id="play-btn" class="btn" style="padding: 6px 16px;">Үзэх</button>
+            <label style="color: #aaa;">Улирал: <select id="season-select-chernobyl" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;"><option value="1">1-р бүлэг</option></select></label>
+            <label style="color: #aaa;">Анги: <select id="episode-select-chernobyl" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;"></select></label>
+            <button id="play-btn-chernobyl" class="btn" style="padding: 6px 16px;">Үзэх</button>
         </div>
     </div>
 </div>
 
-<footer class="Footer"><p>Cinemania © 2026. </p></footer>
+<footer class="Footer" style="margin-top: 50px; padding: 25px 0; text-align: center; border-top: 1px solid #333;">
+    <p>Cinemania © 2026.</p>
+</footer>
 <script>
 let dateElement = document.getElementById('date-display');
 dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
 
-let tmdbId = 87108;
-let seriesPlayer = document.getElementById('series-player');
-let seasonSelect = document.getElementById('season-select');
-let episodeSelect = document.getElementById('episode-select');
-let playBtn = document.getElementById('play-btn');
+let tmdbIdChernobyl = 87108;
+let seasonEpisodesChernobyl = { 1: 5 };
+let seasonSelectChernobyl = document.getElementById('season-select-chernobyl');
+let episodeSelectChernobyl = document.getElementById('episode-select-chernobyl');
+let seriesPlayerChernobyl = document.getElementById('series-player-chernobyl');
+let playBtnChernobyl = document.getElementById('play-btn-chernobyl');
 
-playBtn.addEventListener('click', function() {
-    let season = seasonSelect.value;
-    let episode = episodeSelect.value;
-    seriesPlayer.src = `https://vidsrc.me/embed/tv?tmdb=${tmdbId}&season=${season}&episode=${episode}`;
+function updateEpisodesChernobyl() {
+    let totalEpisodes = seasonEpisodesChernobyl[seasonSelectChernobyl.value] || 5;
+    episodeSelectChernobyl.innerHTML = '';
+    for (let i = 1; i <= totalEpisodes; i++) {
+        let opt = document.createElement('option');
+        opt.value = i; opt.innerText = i + "-р анги";
+        episodeSelectChernobyl.appendChild(opt);
+    }
+}
+updateEpisodesChernobyl();
+playBtnChernobyl.addEventListener('click', function() {
+    seriesPlayerChernobyl.src = `https://vidsrc.me/embed/tv?tmdb=${tmdbIdChernobyl}&season=${seasonSelectChernobyl.value}&episode=${episodeSelectChernobyl.value}`;
 });
 </script>
 </body>
