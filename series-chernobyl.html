@@ -25,27 +25,36 @@
 <div class="container" style="margin-bottom: 60px;">
     <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
         <div style="flex: 1; min-width: 280px;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRuKQFFzfpr_XiBDAr8EPtIFCZ-ItyIIZCQ3FjZvnEINiY-PkNp7c5thHu&s=10" alt="Chernobyl" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
+            <img src="https://image.tmdb.org/t/p/original/wwt3HgxspH65msWspi3PDABU834.jpg" alt="Chernobyl" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
         </div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
                 <h1 style="color: #ffc107; margin-bottom: 15px;">Chernobyl</h1>
                 <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Драма, Түүхэн | <strong>Он:</strong> 2019 | <strong>Үнэлгээ:</strong> 9.4/10</p>
-                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">1986 онд Зөвлөлт Холбоот Улсад гарсан Чернобылийн атомын цахилгаан станцын осол болон үр дагаврыг арилгасан бодит түүх.</p>
+                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">1986 онд ЗХУ-ын Чернобылийн цөмийн цахилгаан станцад гарсан аймшигт осол болон түүний хор уршгийг арилгахын төлөө тэмцсэн хүмүүсийн бодит түүх.</p>
             </div>
             <div style="margin-top: 25px"><a href="series.html" class="btn">Буцах</a></div>
         </div>
     </div>
 
-    <div class="video-card" style="margin-bottom: 20px;">
-        
-        <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 20px;">
-            <iframe id="series-player-chernobyl" src="https://vidsrc.me/embed/tv?tmdb=87108&season=1&episode=1" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+    <div class="video-card" style="margin-bottom: 20px;">   
+        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #ffc107; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
+            <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2</button>
         </div>
+
+        <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 20px;">
+            <iframe id="series-player" src="" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+        </div>
+        
         <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
-            <label style="color: #aaa;">Улирал: <select id="season-select-chernobyl" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;"><option value="1">1-р бүлэг</option></select></label>
-            <label style="color: #aaa;">Анги: <select id="episode-select-chernobyl" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;"></select></label>
-            <button id="play-btn-chernobyl" class="btn" style="padding: 6px 16px;">Үзэх</button>
+            <label style="color: #aaa;">Улирал: 
+                <select id="season-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;">
+                    <option value="1">1-р бүлэг</option>
+                </select>
+            </label>
+            <label style="color: #aaa;">Анги: <select id="episode-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;"></select></label>
+            <button id="play-btn" class="btn" style="padding: 6px 16px;">Үзэх</button>
         </div>
     </div>
 </div>
@@ -57,26 +66,53 @@
 let dateElement = document.getElementById('date-display');
 dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
 
-let tmdbIdChernobyl = 87108;
-let seasonEpisodesChernobyl = { 1: 5 };
-let seasonSelectChernobyl = document.getElementById('season-select-chernobyl');
-let episodeSelectChernobyl = document.getElementById('episode-select-chernobyl');
-let seriesPlayerChernobyl = document.getElementById('series-player-chernobyl');
-let playBtnChernobyl = document.getElementById('play-btn-chernobyl');
+let tmdbId = 87108;
+let seasonEpisodes = { 1: 5 };
+let seasonSelect = document.getElementById('season-select');
+let episodeSelect = document.getElementById('episode-select');
+let seriesPlayer = document.getElementById('series-player');
+let playBtn = document.getElementById('play-btn');
+let currentServer = 'vidlink';
 
-function updateEpisodesChernobyl() {
-    let totalEpisodes = seasonEpisodesChernobyl[seasonSelectChernobyl.value] || 5;
-    episodeSelectChernobyl.innerHTML = '';
+function updateEpisodes() {
+    let totalEpisodes = seasonEpisodes[seasonSelect.value] || 10;
+    episodeSelect.innerHTML = '';
     for (let i = 1; i <= totalEpisodes; i++) {
-        let opt = document.createElement('option');
-        opt.value = i; opt.innerText = i + "-р анги";
-        episodeSelectChernobyl.appendChild(opt);
+        let option = document.createElement('option');
+        option.value = i; option.innerText = i + "-р анги";
+        episodeSelect.appendChild(option);
     }
 }
-updateEpisodesChernobyl();
-playBtnChernobyl.addEventListener('click', function() {
-    seriesPlayerChernobyl.src = `https://vidsrc.me/embed/tv?tmdb=${tmdbIdChernobyl}&season=${seasonSelectChernobyl.value}&episode=${episodeSelectChernobyl.value}`;
-});
+updateEpisodes();
+seasonSelect.addEventListener('change', updateEpisodes);
+
+window.changeServer = function(serverType) {
+    currentServer = serverType;
+    let season = seasonSelect.value;
+    let episode = episodeSelect.value;
+    let url = '';
+
+    ['vidlink', 'vidsrc'].forEach(s => {
+        let btn = document.getElementById(`btn-${s}`);
+        if (s === serverType) {
+            btn.style.background = '#ffc107';
+            btn.style.color = '#000';
+        } else {
+            btn.style.background = '#333';
+            btn.style.color = '#fff';
+        }
+    });
+
+    if (serverType === 'vidlink') {
+        url = `https://vidlink.pro/tv/${tmdbId}/${season}/${episode}?autoplay=false`;
+    } else if (serverType === 'vidsrc') {
+        url = `https://vidsrc.me/embed/tv?tmdb=${tmdbId}&season=${season}&episode=${episode}`;
+    }
+    seriesPlayer.src = url;
+};
+
+window.onload = function() { changeServer('vidlink'); };
+playBtn.addEventListener('click', function() { changeServer(currentServer); });
 </script>
 </body>
 </html>

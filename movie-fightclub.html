@@ -23,25 +23,52 @@
 </nav>
 <div class="container">
     <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
-        <div style="flex: 1; min-width: 280px;"><img src="https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg" alt="Fight Club" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
+        <div style="flex: 1; min-width: 280px;"><img src="https://image.tmdb.org/t/p/w500/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg" alt="Fight Club" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
                 <h1 style="color: #ffc107; margin-bottom: 15px;">Fight Club</h1>
-                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Драма | <strong>Он:</strong> 1999 | <strong>Үнэлгээ:</strong> 8.4/10</p>
-                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Нууц зодооны клуб байгуулсан нь.</p>
+                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Драма | <strong>Он:</strong> 1999 | <strong>Үнэлгээ:</strong> 8.8/10</p>
+                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Нойргүйдэлтэй шаналсан албан хаагч саван үйлдвэрлэгч Тайлер Дёрдентай танилцаж, нууц тулааны клуб байгуулах нь.</p>
             </div>
             <div><a href="movies.html" class="btn">Буцах</a></div>
         </div>
     </div>
-    <div class="video-card">
-        
-        <div class="video-wrap"><iframe id="movie-player" src="https://vidsrc.me/embed/movie?tmdb=550" width="100%" height="450px" style="border: none; border-radius: 6px;" allowfullscreen></iframe></div>
+    <div class="video-card" style="margin-bottom: 20px;">
+        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #ffc107; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
+            <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2</button>
+        </div>
+        <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9;">
+            <iframe id="movie-player" src="" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+        </div>
     </div>
 </div>
-<footer class="Footer"><p>Cinemania © 2026. </p></footer>
+<footer class="Footer" style="margin-top: 50px; padding: 25px 0; text-align: center; border-top: 1px solid #333;"><p>Cinemania © 2026. </p></footer>
 <script>
 let dateElement = document.getElementById('date-display');
 dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
+let tmdbId = 550;
+let moviePlayer = document.getElementById('movie-player');
+window.changeServer = function(serverType) {
+    let url = '';
+    ['vidlink', 'vidsrc'].forEach(s => {
+        let btn = document.getElementById(`btn-${s}`);
+        if (s === serverType) {
+            btn.style.background = '#ffc107';
+            btn.style.color = '#000';
+        } else {
+            btn.style.background = '#333';
+            btn.style.color = '#fff';
+        }
+    });
+    if (serverType === 'vidlink') {
+        url = `https://vidlink.pro/movie/${tmdbId}?autoplay=false`;
+    } else if (serverType === 'vidsrc') {
+        url = `https://vidsrc.me/embed/movie?tmdb=${tmdbId}`;
+    }
+    moviePlayer.src = url;
+};
+window.onload = function() { changeServer('vidlink'); };
 </script>
 </body>
 </html>

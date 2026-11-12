@@ -21,46 +21,54 @@
     </ul>
     <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
 </nav>
-
 <div class="container">
-    <!-- Киноны мэдээлэл болон зураг -->
     <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
-        <div style="flex: 1; min-width: 280px;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHtBGsnxOoEQAsboEspaPoElQT-Z4wtTikQ45Hrb3x_6NvjOw607ZrPxk&s=10" alt="Dune: Part Two" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
-        </div>
+        <div style="flex: 1; min-width: 280px;"><img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune: Part Two" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
                 <h1 style="color: #ffc107; margin-bottom: 15px;">Dune: Part Two</h1>
-                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Уран зөгнөлт, Шинжлэх ухаанч | <strong>Он:</strong> 2024 | <strong>Үнэлгээ:</strong> 8.6/10</p>
-                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">
-                    Пол Атрейдес Чани болон Фрименуудтай нэгдэж, түүнийг сүйрэлд хүргэсэн хуйвалдаанчдын эсрэг өшөө авах баатарлаг аянаа үргэлжлүүлж буй тухай өгүүлнэ. Тэрээр амьдралынхаа хайр болон орчлон ертөнцийн хувь заяаны хооронд сонголт хийх шаардлагатай тулгарна.
-                </p>
+                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Зөгнөлт, Адвенчур | <strong>Он:</strong> 2024 | <strong>Үнэлгээ:</strong> 8.3/10</p>
+                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Пол Атридес Чани болон Фременчүүдтэй нэгдэж, гэр бүлийг нь устгасан хуйвалдагчдаас өшөө авахаар тэмцэнэ.</p>
             </div>
-            <div style="margin-top: 25px">
-                <a href="movies.html" class="btn">Буцах</a>
-            </div>
+            <div><a href="movies.html" class="btn">Буцах</a></div>
         </div>
     </div>
-
-    <!-- Кино үзэх тоглуулагч хэсэг -->
-    <div class="video-card">
-        <h3 style="color: #ffc107; margin-bottom: 15px;">Кино үзэх</h3>
+    <div class="video-card" style="margin-bottom: 20px;">
+        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #ffc107; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
+            <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2</button>
+        </div>
         <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9;">
-            <iframe src="https://vidsrc.me/embed/movie?tmdb=693134" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+            <iframe id="movie-player" src="" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
         </div>
     </div>
 </div>
-
-<footer class="Footer" style="text-align: center; margin-top: 40px; padding: 20px; background: #1f1f1f; border-top: 1px solid #333; color: #888;">
-    <p>Cinemania © 2026. Бүх эрх хуулиар хамгаалагдсан.</p>
-</footer>
-
+<footer class="Footer" style="margin-top: 50px; padding: 25px 0; text-align: center; border-top: 1px solid #333;"><p>Cinemania © 2026. </p></footer>
 <script>
-    let dateElement = document.getElementById('date-display');
-    if (dateElement) {
-        let today = new Date();
-        dateElement.innerText = today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
+let dateElement = document.getElementById('date-display');
+dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
+let tmdbId = 693134;
+let moviePlayer = document.getElementById('movie-player');
+window.changeServer = function(serverType) {
+    let url = '';
+    ['vidlink', 'vidsrc'].forEach(s => {
+        let btn = document.getElementById(`btn-${s}`);
+        if (s === serverType) {
+            btn.style.background = '#ffc107';
+            btn.style.color = '#000';
+        } else {
+            btn.style.background = '#333';
+            btn.style.color = '#fff';
+        }
+    });
+    if (serverType === 'vidlink') {
+        url = `https://vidlink.pro/movie/${tmdbId}?autoplay=false`;
+    } else if (serverType === 'vidsrc') {
+        url = `https://vidsrc.me/embed/movie?tmdb=${tmdbId}`;
     }
+    moviePlayer.src = url;
+};
+window.onload = function() { changeServer('vidlink'); };
 </script>
 </body>
 </html>

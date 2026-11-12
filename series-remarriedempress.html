@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinemania - Remarried Empress</title>
+    <title>Cinemania - The Remarried Empress</title>
     <link rel="icon" type="image/png" href="logo-v2.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,11 +25,11 @@
 <div class="container" style="margin-bottom: 60px;">
     <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
         <div style="flex: 1; min-width: 280px;">
-            <img src="https://m.media-amazon.com/images/M/MV5BODNlYWMxNjktZWQ2MS00ZmYyLWJjNTEtZjJiNDhjNmUyMTQzXkEyXkFqcGc@._V1_.jpg" alt="Remarried Empress" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
+            <img src="https://m.media-amazon.com/images/M/MV5BODNlYWMxNjktZWQ2MS00ZmYyLWJjNTEtZjJiNDhjNmUyMTQzXkEyXkFqcGc@._V1_.jpg" alt="The Remarried Empress" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
         </div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-                <h1 style="color: #ffc107; margin-bottom: 15px;">Remarried Empress</h1>
+                <h1 style="color: #ffc107; margin-bottom: 15px;">The Remarried Empress</h1>
                 <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Уран зөгнөл, Драма, Романтик | <strong>Он:</strong> 2026 | <strong>Үнэлгээ:</strong> 7.6/10</p>
                 <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Императрица Навье гэрлэлтээ цуцлуулахыг хүссэн түүний түүх болон хаант улсын улс төр, хайр дурлалын ээдрээтэй үйл явдлууд.</p>
             </div>
@@ -38,9 +38,15 @@
     </div>
 
     <div class="video-card" style="margin-bottom: 20px;">   
-        <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 20px;">
-            <iframe id="series-player" src="https://vidlink.pro/tv/279246/1/1" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #ffc107; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
+            <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2</button>
         </div>
+
+        <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 20px;">
+            <iframe id="series-player" src="" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+        </div>
+        
         <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
             <label style="color: #aaa;">Улирал: 
                 <select id="season-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;">
@@ -61,11 +67,12 @@ let dateElement = document.getElementById('date-display');
 dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
 
 let tmdbId = 279246;
-let seasonEpisodes = { 1: 10 }; // Шаардлагатай бол ангийн тоог өөрчилж болно
+let seasonEpisodes = { 1: 10 };
 let seasonSelect = document.getElementById('season-select');
 let episodeSelect = document.getElementById('episode-select');
 let seriesPlayer = document.getElementById('series-player');
 let playBtn = document.getElementById('play-btn');
+let currentServer = 'vidlink';
 
 function updateEpisodes() {
     let totalEpisodes = seasonEpisodes[seasonSelect.value] || 10;
@@ -79,11 +86,33 @@ function updateEpisodes() {
 updateEpisodes();
 seasonSelect.addEventListener('change', updateEpisodes);
 
-playBtn.addEventListener('click', function() {
+window.changeServer = function(serverType) {
+    currentServer = serverType;
     let season = seasonSelect.value;
     let episode = episodeSelect.value;
-    seriesPlayer.src = `https://vidlink.pro/tv/${tmdbId}/${season}/${episode}`;
-});
+    let url = '';
+
+    ['vidlink', 'vidsrc'].forEach(s => {
+        let btn = document.getElementById(`btn-${s}`);
+        if (s === serverType) {
+            btn.style.background = '#ffc107';
+            btn.style.color = '#000';
+        } else {
+            btn.style.background = '#333';
+            btn.style.color = '#fff';
+        }
+    });
+
+    if (serverType === 'vidlink') {
+        url = `https://vidlink.pro/tv/${tmdbId}/${season}/${episode}?autoplay=false`;
+    } else if (serverType === 'vidsrc') {
+        url = `https://vidsrc.me/embed/tv?tmdb=${tmdbId}&season=${season}&episode=${episode}`;
+    }
+    seriesPlayer.src = url;
+};
+
+window.onload = function() { changeServer('vidlink'); };
+playBtn.addEventListener('click', function() { changeServer(currentServer); });
 </script>
 </body>
 </html>
