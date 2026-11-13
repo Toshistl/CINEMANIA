@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemania - Francesca Next Door</title>
+    <link rel="icon" type="image/png" href="logo-v2.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="undsen-tses">
+    <a href="index.html" class="site-logo"><img src="logo-v2.png" alt="Logo"> CINEMANIA</a>
+    <ul class="list-pages">
+        <li><a href="index.html">Нүүр</a></li>
+        <li><a href="movies.html">Кино</a></li>
+        <li><a href="series.html" class="active">Сериал</a></li>
+        <li><a href="trailers.html">Трейлер</a></li>
+        <li><a href="top-rated.html">Топ 10</a></li>
+        <li><a href="actors.html">Жүжигчид</a></li>
+        <li><a href="contact.html">Холбоо барих</a></li>
+    </ul>
+    <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span><a href="login.html" class="btn">Нэвтрэх</a></div>
+</nav>
+
+<div class="container" style="margin-bottom: 60px;">
+    <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
+        <div style="flex: 1; min-width: 280px;">
+            <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/xiB4NaaTssLxFEIao3IOb9MOHHB.jpg" alt="Francesca Next Door" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
+        </div>
+        <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h1 style="color: #ffc107; margin-bottom: 15px;">Francesca Next Door</h1>
+                <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Драма, Инээдэм | <strong>Он:</strong> 2026 | <strong>Үнэлгээ:</strong> 8.3/10</p>
+                <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Румын гаралтай цус сорогч шилжин ирсэн сурагч На Ён нийгмийн ур чадваргүй, жирийн ухаангүй ч муу санаагүй. Хүний ертөнцөд дасч чадалгүй сургууль дээрээ асуудал дагуулсаар байтал У Жүтэй учирч, анх удаа зүрх нь дэлсэхийг мэднэ. Хүнийг хайрласан цус сорогч, түүний зөн совинг сэрээх өөр нэгэн цус сорогч хоёрын дунд хайр ба зөн совингийн завсар найгах, амтат боловч үхлийн аюултай залуучуудын романс.</p>
+            </div>
+            <div style="margin-top: 25px"><a href="series.html" class="btn">Буцах</a></div>
+        </div>
+    </div>
+
+    <div class="video-card" style="margin-bottom: 20px;">   
+        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #ffc107; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
+            <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2</button>
+        </div>
+
+        <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 20px;">
+            <iframe id="series-player" src="" width="100%" height="100%" style="border: none; border-radius: 6px;" allowfullscreen></iframe>
+        </div>
+        
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+            <label style="color: #aaa;">Улирал: 
+                <select id="season-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;">
+                    <option value="1">1-р бүлэг</option>
+                </select>
+            </label>
+            <label style="color: #aaa;">Анги: <select id="episode-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;"></select></label>
+            <button id="play-btn" class="btn" style="padding: 6px 16px;">Үзэх</button>
+        </div>
+    </div>
+</div>
+
+<footer class="Footer" style="margin-top: 50px; padding: 25px 0; text-align: center; border-top: 1px solid #333;">
+    <p>Cinemania © 2026.</p>
+</footer>
+<script>
+let dateElement = document.getElementById('date-display');
+dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
+
+let tmdbId = 332269;
+let seasonEpisodes = { 1: 4};
+let seasonSelect = document.getElementById('season-select');
+let episodeSelect = document.getElementById('episode-select');
+let seriesPlayer = document.getElementById('series-player');
+let playBtn = document.getElementById('play-btn');
+let currentServer = 'vidlink';
+
+function updateEpisodes() {
+    let totalEpisodes = seasonEpisodes[seasonSelect.value] || 10;
+    episodeSelect.innerHTML = '';
+    for (let i = 1; i <= totalEpisodes; i++) {
+        let option = document.createElement('option');
+        option.value = i; option.innerText = i + "-р анги";
+        episodeSelect.appendChild(option);
+    }
+}
+updateEpisodes();
+seasonSelect.addEventListener('change', updateEpisodes);
+
+window.changeServer = function(serverType) {
+    currentServer = serverType;
+    let season = seasonSelect.value;
+    let episode = episodeSelect.value;
+    let url = '';
+
+    ['vidlink', 'vidsrc'].forEach(s => {
+        let btn = document.getElementById(`btn-${s}`);
+        if (s === serverType) {
+            btn.style.background = '#ffc107';
+            btn.style.color = '#000';
+        } else {
+            btn.style.background = '#333';
+            btn.style.color = '#fff';
+        }
+    });
+
+    if (serverType === 'vidlink') {
+        url = `https://vidlink.pro/tv/${tmdbId}/${season}/${episode}?autoplay=false`;
+    } else if (serverType === 'vidsrc') {
+        url = `https://vidsrc.me/embed/tv?tmdb=${tmdbId}&season=${season}&episode=${episode}`;
+    }
+    seriesPlayer.src = url;
+};
+
+window.onload = function() { changeServer('vidlink'); };
+playBtn.addEventListener('click', function() { changeServer(currentServer); });
+</script>
+</body>
+</html>
