@@ -38,7 +38,6 @@
         </form>
     </div>
 
-    <!-- Slideshow Banner -->
     <div class="hero-slider">
         <div class="slide" style="background-image: url('https://image.tmdb.org/t/p/original/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg');">
             <div class="slide-content">
@@ -132,12 +131,10 @@
 </footer>
 
 <script>
-    // Огноо харуулах
     let dateElement = document.getElementById('date-display');
     let today = new Date();
     dateElement.innerText = today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
 
-    // Нэвтэрсэн эсэхийг шалгах
     let isLoggedIn = localStorage.getItem('cinemania_logged_in');
     let loggedUser = localStorage.getItem('cinemania_ner');
 
@@ -153,7 +150,6 @@
         `;
     }
 
-    // Slideshow логик
     let slideIndex = 0;
     let slides = document.querySelectorAll('.slide');
     let dots = document.querySelectorAll('.dot');

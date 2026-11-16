@@ -20,13 +20,11 @@
         <li><a href="contact.html">Холбоо барих</a></li>
     </ul>
     <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span>
-        <!-- Баруун дээд булангийн хэсэг -->
-<div id="auth-container">
-    <a href="login.html" id="login-btn" class="btn">Нэвтрэх</a>
-</div>
+        <div id="auth-container">
+            <a href="login.html" id="login-btn" class="btn">Нэвтрэх</a>
+        </div>
 
 <script>
-    // LocalStorage-оос нэвтэрсэн эсэх болон хэрэглэгчийн нэрийг шалгах
     let isLoggedIn = localStorage.getItem('cinemania_logged_in');
     let loggedUser = localStorage.getItem('cinemania_ner');
 
@@ -34,11 +32,11 @@
         let authContainer = document.getElementById('auth-container');
         authContainer.innerHTML = `
             <div style="display: inline-flex; align-items: center; gap: 10px;">
-                <!-- Нэр дээр дарахад login.html (профайл) руу орно -->
+            
                 <a href="login.html" style="color: #06b6d4; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
                      ${loggedUser}
                 </a> 
-                <!-- Гарах товч дарахад зөвхөн нэвтэрсэн төлөвийг арилгана -->
+            
                 <a href="login.html" onclick="localStorage.removeItem('cinemania_logged_in');" class="btn" style="padding: 5px 12px; font-size: 13px; background: #d9534f; color: #fff; border-radius: 4px; text-decoration: none;">Гарах</a>
             </div>
         `;
@@ -51,7 +49,6 @@
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
         <h2 class="Title" style="color: #06b6d4; margin: 0;"></h2>
         
-        <!-- Баруун дээд буланд байрлах хайлтын хэсэг -->
         <form action="search.html" method="GET" style="display: flex; gap: 8px;">
             <input type="text" name="q" placeholder="Кино, сериал хайх..." style="padding: 8px 14px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px; outline: none; font-size: 14px; min-width: 200px;">
             <button type="submit" class="btn" style="padding: 8px 16px; cursor: pointer;">Хайх</button>
@@ -59,9 +56,7 @@
     </div>
     <h2 id="search-title" class="Title" style="color: #06b6d4; margin-bottom: 25px;">Хайлтын үр дүн</h2>
     
-    <!-- Хайлтын үр дүнг байрлуулах сүлжээ хэсэг -->
     <div id="search-results" class="movie-net" style="display: flex; flex-wrap: wrap; gap: 20px;">
-        <!-- JavaScript-ээр үр дүн энд автоматаар орж ирнэ -->
     </div>
 </div>
 
@@ -76,9 +71,7 @@
         dateElement.innerText = today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
     }
 
-    // Сайт дээрх бүх кино болон сериалуудын сан
     let allMediaItems = [
-        // Кинонууд
         { title: "12 Angry Men", type: "Кино", year: "1957", img: "https://image.tmdb.org/t/p/w500/ow3wq89wM893kS89dS9k2.jpg", link: "movie-12angrymen.html" },
         { title: "Avatar", type: "Кино", year: "2009", img: "https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg", link: "movie-avatar1.html" },
         { title: "Avatar The Way of Water", type: "Кино", year: "2022", img: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg", link: "movie-avatar2.html" },
@@ -108,7 +101,6 @@
         { title: "Titanic", type: "Кино", year: "1997", img: "https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", link: "movie-titanic.html" },
         { title: "Ride On", type: "Кино", year: "2023", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv3o43KkHW0tOOpkmSQZN4RMCkFWJMaKlSDD_poymFqg&s=10", link: "movie-rideon.html" },
 
-        // Сериалууд
         { title: "Breaking Bad", type: "Сериал", year: "2008", img: "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg", link: "series-breakingbad.html" },
         { title: "Chernobyl", type: "Сериал", year: "2019", img: "https://image.tmdb.org/t/p/original/wwt3HgxspH65msWspi3PDABU834.jpg", link: "series-chernobyl.html" },
         { title: "Game of Thrones", type: "Сериал", year: "2011", img: "https://image.tmdb.org/t/p/w500/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg", link: "series-got.html" },

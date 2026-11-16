@@ -1,6 +1,3 @@
-/* ==========================================
-   1. ҮНДСЭН ТОХИРГОО БОЛОН RESET
-   ========================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -28,16 +25,13 @@ img {
     height: auto;
 }
 
-/* ==========================================
-   2. НАВИГАЦИЙН ЦЭС (HEADER & NAVBAR)
-   ========================================== */
 .undsen-tses {
     background-color: #1a1d24;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    border-bottom: 2px solid #06b6d4; /* Цэвэр оюу хөх / Teal */
+    border-bottom: 2px solid #06b6d4;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -86,9 +80,6 @@ img {
     color: #22d3ee;
 }
 
-/* ==========================================
-   3. ХАЙЛТ БОЛОН ТОВЧУУД (SEARCH & BUTTONS)
-   ========================================== */
 .search-container {
     display: flex;
     gap: 10px;
@@ -144,9 +135,6 @@ img {
     transform: translateY(-1px);
 }
 
-/* ==========================================
-   4. ҮНДСЭН АГУУЛГА БОЛОН ГАРЧИГ (CONTAINER)
-   ========================================== */
 .container {
     width: 100%;
     max-width: 1100px;
@@ -162,9 +150,6 @@ img {
     margin-bottom: 20px;
 }
 
-/* ==========================================
-   5. HERO SLIDER (НҮҮР ХУУДАСНЫ СЛАЙДЕР)
-   ========================================== */
 .hero-slider {
     position: relative;
     width: 100%;
@@ -262,7 +247,7 @@ img {
 .dot {
     width: 10px;
     height: 10px;
-    background-color: white;
+    background-color: gray;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -273,9 +258,6 @@ img {
     background-color: #22d3ee;
 }
 
-/* ==========================================
-   6. КИНОНЫ КАРТУУД БОЛОН СҮЛЖЭЭ (MOVIE CARDS)
-   ========================================== */
 .movie-net {
     display: flex;
     gap: 20px;
@@ -332,9 +314,6 @@ img {
     line-height: 1.4;
 }
 
-/* ==========================================
-   7. ТОП 10 КИНОНЫ HOVER КАРТУУД (TOP 10 GRID)
-   ========================================== */
 .top10-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -482,9 +461,6 @@ img {
     flex-shrink: 0;
 }
 
-/* ==========================================
-   8. БАННЕР БОЛОН ВИДЕО ТОГЛУУЛАГЧ (BANNER & VIDEO)
-   ========================================== */
 .banner {
     background-color: #1a1d24;
     border: 1px solid #2f3542;
@@ -540,9 +516,6 @@ img {
     border: none;
 }
 
-/* ==========================================
-   9. VIDSRC МОДАЛ ЦОНХ (MODAL)
-   ========================================== */
 .modal {
     display: none;
     position: fixed;
@@ -589,9 +562,6 @@ img {
     color: #22d3ee;
 }
 
-/* ==========================================
-   10. ПРОФАЙЛ БОЛОН ФОРМУУД (PROFILE & FORMS)
-   ========================================== */
 .profile-sec {
     width: 100%;
     max-width: 450px;
@@ -649,9 +619,6 @@ img {
     width: 100%;
 }
 
-/* ==========================================
-   11. FOOTER (ХӨЛ ХЭСЭГ)
-   ========================================== */
 body footer.Footer {
     background-color: #1a1d24;
     color: #9ca3af;
@@ -668,9 +635,6 @@ body footer.Footer p {
     color: #9ca3af;
 }
 
-/* ==========================================
-   12. RESPONSIVE DESIGN (ЭКРАНЫ ЗӨРҮҮЛЭЛТ)
-   ========================================== */
 @media (max-width: 992px) {
     .container {
         max-width: 100%;

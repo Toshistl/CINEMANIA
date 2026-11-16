@@ -20,13 +20,12 @@
         <li><a href="contact.html">Холбоо барих</a></li>
     </ul>
     <div><span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span>
-     <!-- Баруун дээд булангийн хэсэг -->
     <div id="auth-container">
         <a href="login.html" id="login-btn" class="btn">Нэвтрэх</a>
     </div>
 
     <script>
-        // LocalStorage-оос нэвтэрсэн эсэх болон хэрэглэгчийн нэрийг шалгах
+        
         let isLoggedIn = localStorage.getItem('cinemania_logged_in');
         let loggedUser = localStorage.getItem('cinemania_ner');
 
@@ -34,11 +33,9 @@
             let authContainer = document.getElementById('auth-container');
             authContainer.innerHTML = `
                 <div style="display: inline-flex; align-items: center; gap: 10px;">
-                    <!-- Нэр дээр дарахад login.html (профайл) руу орно -->
                     <a href="login.html" style="color: #06b6d4; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
                         ${loggedUser}
                     </a> 
-                    <!-- Гарах товч дарахад зөвхөн нэвтэрсэн төлөвийг арилгана -->
                     <a href="login.html" onclick="localStorage.removeItem('cinemania_logged_in');" class="btn" style="padding: 5px 12px; font-size: 13px; background: #d9534f; color: #fff; border-radius: 4px; text-decoration: none;">Гарах</a>
                 </div>
             `;
@@ -52,7 +49,7 @@
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
         <h2 class="Title" style="color: #06b6d4; margin: 0;"></h2>
         
-        <!-- Баруун дээд буланд байрлах хайлтын хэсэг -->
+        
         <form action="search.html" method="GET" style="display: flex; gap: 8px;">
             <input type="text" name="q" placeholder="Кино, сериал хайх..." style="padding: 8px 14px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px; outline: none; font-size: 14px; min-width: 200px;">
             <button type="submit" class="btn" style="padding: 8px 16px; cursor: pointer;">Хайх</button>
@@ -62,7 +59,6 @@
     
     <div style="display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin: 0 auto; min-width: 300px;">
         
-        <!-- 1 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmKdKrcZFTChoTrd43YtqeSoDSI2G3Tc85XHEsw1aDobAkJUWEfJmB0C1O&s=10" alt="Cillian Murphy" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -72,7 +68,6 @@
             </div>
         </div>
 
-        <!-- 2 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8v6FMYVtgyZFs-c2743B8cdtzYIIwn2wMYTsym302JJ17CESAdvFUReR9&s=10" alt="Christian Bale" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -82,7 +77,6 @@
             </div>
         </div>
 
-        <!-- 3 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaGLw-Q2AOHH97CtuL0xmD5oJBfQ-Y9SA8nPxChaT59FK4qUz8ma7ULZcp&s=10" alt="Keanu Reeves" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -92,7 +86,6 @@
             </div>
         </div>
 
-        <!-- 4 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIk0uX0NLFI9PMFyKBRmwRPLRk3dC49n-uuz39fKAaqsigRelv6CxMAxA&s=10" alt="Leonardo DiCaprio" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -102,7 +95,6 @@
             </div>
         </div>
 
-        <!-- 5 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7y9NkJ-tKmeBBqpoHlXBhw20EGv-gjEPRZj5CbEGZ6_HWmaFDVtFemBY&s=10" alt="Tom Hardy" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -112,7 +104,6 @@
             </div>
         </div>
 
-        <!-- 6 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVq-FJPdDC65_hnXrLLXwNjPyJ0Tzqwmg0vLOYnZ3zLighyDFcsGisznUA&s=10" alt="Robert Downey Jr." style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -122,7 +113,6 @@
             </div>
         </div>
 
-        <!-- 7 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf_xjcRccW0Yg9Kr2guMecFOlbC7CRSCpb7kz9CU5GkNCPU3ypGqIDxNyZ&s=10" alt="Scarlett Johansson" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -132,7 +122,6 @@
             </div>
         </div>
 
-        <!-- 8 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://wallpapercave.com/wp/wp13264333.jpg" alt="Margot Robbie" style=" width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -142,7 +131,6 @@
             </div>
         </div>
 
-        <!-- 9 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://i0.wp.com/media.hollywoodlife.com/uploads/2019/07/brad-pitt-then-now-gallery-00.jpg?w=680&quality=89&ssl=1" alt="Brad Pitt" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -152,7 +140,6 @@
             </div>
         </div>
 
-        <!-- 10 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSZB96PuxikpgPea2YRzp7wisgN3nG4OGrOY-HzNLAmJEqOTNTXOJ3Lf4&s=10" alt="Anne Hathaway" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -162,7 +149,6 @@
             </div>
         </div>
 
-        <!-- 11 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_LZEa-RnRHiPb1DhbBSIIR-qQPu48hvueS_k9F-oEK7zUnjlxPGZTJGM&s=10" alt="Zendaya" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -172,7 +158,6 @@
             </div>
         </div>
 
-        <!-- 12 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://wallpapercat.com/w/full/4/e/4/108216-1637x2048-iphone-hd-timothee-chalamet-background-image.jpg" alt="Timothée Chalamet" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -182,7 +167,6 @@
             </div>
         </div>
 
-        <!-- 13 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQws6IKkpBg4wmwawBhBhlVW5ucKWDAH8R2SHg22MNzFuK4F3gwDhKHBjYI&s=10" alt="Millie Bobby Brown" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -192,7 +176,6 @@
             </div>
         </div>
 
-        <!-- 14 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnmn_ZrulT9QGt9PV7KORq2qaMHzLwa6LoGbMX-kBM-A&s=10" alt="Bryan Cranston" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">
@@ -202,7 +185,6 @@
             </div>
         </div>
 
-        <!-- 15 -->
         <div style="background: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
             <img src="https://images4.alphacoders.com/858/858030.jpg" alt="Emilia Clarke" style="width: 250px; height: 250px; object-fit: cover; border-radius: 6px;">
             <div style="flex: 1; min-width: 250px;">

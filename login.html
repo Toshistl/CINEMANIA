@@ -22,13 +22,12 @@
     </ul>
     <div>
         <span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span>
-        <!-- Баруун дээд булангийн хэсэг -->
         <div id="auth-container">
         <a href="login.html" id="login-btn" class="btn">Нэвтрэх</a>
         </div>
 
         <script>
-            // LocalStorage-оос нэвтэрсэн эсэх болон хэрэглэгчийн нэрийг шалгах
+            
             let isLoggedIn = localStorage.getItem('cinemania_logged_in');
             let loggedUser = localStorage.getItem('cinemania_ner');
 
@@ -36,11 +35,9 @@
                 let authContainer = document.getElementById('auth-container');
                 authContainer.innerHTML = `
                     <div style="display: inline-flex; align-items: center; gap: 10px;">
-                        <!-- Нэр дээр дарахад login.html (профайл) руу орно -->
                         <a href="login.html" style="color: #06b6d4; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
                              ${loggedUser}
                         </a> 
-                        <!-- Гарах товч дарахад зөвхөн нэвтэрсэн төлөвийг арилгана -->
                         <a href="login.html" onclick="localStorage.removeItem('cinemania_logged_in');" class="btn" style="padding: 5px 12px; font-size: 13px; background: #d9534f; color: #fff; border-radius: 4px; text-decoration: none;">Гарах</a>
                     </div>
                 `;
@@ -53,13 +50,11 @@
     
     <div id="main-card" class="form-card" style="background: #1f1f1f; padding: 30px; border-radius: 8px; border: 1px solid #333;">
         
-        <!-- Сонгох товчлуурууд (Tabs) -->
         <div id="tab-buttons" style="display: flex; margin-bottom: 25px; border-bottom: 1px solid #333;">
             <button id="tab-burtgel-btn" onclick="showBurtgel()" style="flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid #06b6d4; color: #06b6d4; font-weight: bold; cursor: pointer;">Бүртгүүлэх</button>
             <button id="tab-nevtreh-btn" onclick="showNevtreh()" style="flex: 1; padding: 10px; background: none; border: none; color: #aaa; cursor: pointer;">Нэвтрэх</button>
         </div>
 
-        <!-- 1. БҮРТГҮҮЛЭХ ХЭСЭГ (Анх нээлттэй харагдана) -->
         <div id="burtgel-sec">
             <h3 style="color: #fff; text-align: center; margin-bottom: 15px;">Шинэ хэрэглэгч бүртгүүлэх</h3>
             <p id="b-msg" style="text-align: center; margin-bottom: 15px; font-size: 14px;"></p>
@@ -97,12 +92,9 @@
             </form>
         </div>
 
-        <!-- Профайл хэсэг -->
         <div id="profile-sec" class="profile-sec" style="display: none; text-align: center;">
-            <!-- Профайл зураг -->
             <img id="p-avatar-img" class="profile-avatar" src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Profile" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 10px auto;">
             
-            <!-- Зургаа солих хэсэг -->
             <div style="margin-bottom: 15px;">
                 <input type="text" id="avatar-url-input" placeholder="Зургийн линк (URL) оруулах..." style="padding: 6px; width: 80%; font-size: 12px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff;">
                 <button onclick="changeAvatar()" class="btn" style="padding: 6px 10px; font-size: 12px; margin-top: 5px; cursor: pointer;">Зураг солих</button>
@@ -113,7 +105,6 @@
 
             <div class="profile-info" style="background: #252525; padding: 12px; border-radius: 6px; margin-bottom: 20px; text-align: left;">
                 <p style="margin: 5px 0; color: #ddd;"><strong>Сайтын статус:</strong> Гишүүн</p>
-                <!-- Үзсэн кинонуудын тоог localStorage-оос авч харуулна -->
                 <p style="margin: 5px 0; color: #ddd;"><strong>Үзсэн кинонуудын тоо:</strong> <span id="watched-count" style="color: #06b6d4; font-weight: bold;">0</span></p>
             </div>
 
@@ -129,7 +120,6 @@
 <script>
 document.getElementById('date-display').innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
 
-// Таб солих функцууд
 function showBurtgel() {
     document.getElementById('burtgel-sec').style.display = 'block';
     document.getElementById('nevtreh-sec').style.display = 'none';
@@ -154,7 +144,6 @@ function showNevtreh() {
     document.getElementById('tab-burtgel-btn').style.borderBottom = 'none';
 }
 
-// Профайлыг харуулах функц
 function showProfile() {
     document.getElementById('burtgel-sec').style.display = 'none';
     document.getElementById('nevtreh-sec').style.display = 'none';
@@ -176,7 +165,6 @@ function showProfile() {
     document.getElementById('watched-count').innerText = watchedMovies;
 }
 
-// Бүртгүүлэх
 function burtgeh(event) {
     event.preventDefault();
     let ner = document.getElementById('b-ner').value.trim();
@@ -202,7 +190,6 @@ function burtgeh(event) {
     }, 1000);
 }
 
-// Нэвтрэх
 function nevtreh(event) {
     event.preventDefault();
     let email = document.getElementById('n-email').value.trim();
@@ -224,7 +211,6 @@ function nevtreh(event) {
     }
 }
 
-// Профайл зураг солих
 function changeAvatar() {
     let newUrl = document.getElementById('avatar-url-input').value.trim();
     if (newUrl !== "") {
@@ -236,11 +222,9 @@ function changeAvatar() {
     }
 }
 
-// Системээс гарах (Бүртгэлийг хэвээр үлдээж, зөвхөн нэвтэрсэн төлөвийг арилгана)
 function garah() {
     localStorage.removeItem('cinemania_logged_in');
     
-    // Формуудыг цэвэрлэх
     document.getElementById('n-email').value = "";
     document.getElementById('n-nuuts').value = "";
     document.getElementById('n-msg').innerText = "";
@@ -248,7 +232,6 @@ function garah() {
     showNevtreh();
 }
 
-// Хуудас ачаалагдахад шалгах
 window.addEventListener('DOMContentLoaded', () => {
     let isLoggedIn = localStorage.getItem('cinemania_logged_in');
     let storedEmail = localStorage.getItem('cinemania_email');
