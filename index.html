@@ -22,47 +22,86 @@
     </ul>
     <div>
         <span id="date-display" style="color: #aaa; margin-right: 15px; font-size: 14px;"></span>
-        <!-- Баруун дээд булангийн хэсэг -->
-<div id="auth-container">
-    <a href="login.html" id="login-btn" class="btn">Нэвтрэх</a>
-</div>
-
-<script>
-    // LocalStorage-оос нэвтэрсэн эсэх болон хэрэглэгчийн нэрийг шалгах
-    let isLoggedIn = localStorage.getItem('cinemania_logged_in');
-    let loggedUser = localStorage.getItem('cinemania_ner');
-
-    if (isLoggedIn === 'true' && loggedUser) {
-        let authContainer = document.getElementById('auth-container');
-        authContainer.innerHTML = `
-            <div style="display: inline-flex; align-items: center; gap: 10px;">
-                <!-- Нэр дээр дарахад login.html (профайл) руу орно -->
-                <a href="login.html" style="color: #ffc107; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
-                     ${loggedUser}
-                </a> 
-                <!-- Гарах товч дарахад зөвхөн нэвтэрсэн төлөвийг арилгана -->
-                <a href="login.html" onclick="localStorage.removeItem('cinemania_logged_in');" class="btn" style="padding: 5px 12px; font-size: 13px; background: #d9534f; color: #fff; border-radius: 4px; text-decoration: none;">Гарах</a>
-            </div>
-        `;
-    }
-</script>
+        <div id="auth-container">
+            <a href="login.html" id="login-btn" class="btn">Нэвтрэх</a>
+        </div>
     </div>
 </nav>
 
 <div class="container">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
-        <h2 class="Title" style="color: #ffc107; margin: 0;"></h2>
+        <h2 class="Title" style="color: #06b6d4; margin: 0;"></h2>
         
-        <!-- Баруун дээд буланд байрлах хайлтын хэсэг -->
         <form action="search.html" method="GET" style="display: flex; gap: 8px;">
             <input type="text" name="q" placeholder="Кино, сериал хайх..." style="padding: 8px 14px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px; outline: none; font-size: 14px; min-width: 200px;">
             <button type="submit" class="btn" style="padding: 8px 16px; cursor: pointer;">Хайх</button>
         </form>
     </div>
-    <div class="banner">
-        <h1>Шилдэг киноны ертөнцөд тавтай морил</h1>
-        <p>Хамгийн сүүлийн үеийн сонирхолтой кинонууд болон трейлерүүдийг үзэх.</p>
-        <a href="movies.html" class="btn">Кино үзэх</a>
+
+    <!-- Slideshow Banner -->
+    <div class="hero-slider">
+        <div class="slide" style="background-image: url('https://image.tmdb.org/t/p/original/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg');">
+            <div class="slide-content">
+                <h2>Spider-Man: No Way Home</h2>
+                <p>Хүн-Аалзны нууц олон нийтэд ил болсны дараа Питер Доктор Стрэнджээс тусламж хүснэ. Гэвч шившлэг буруугаар эргэж, өөр ертөнцийн аюултай дайснууд гарч ирж эхэлнэ.</p>
+                <a href="movie-spiderman.html" class="btn">Дэлгэрэнгүй</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg');">
+            <div class="slide-content">
+                <h2>Avatar: The Way of Water</h2>
+                <p>Жэйк Слли Пандора саран дээр шинээр олж авсан гэр бүлийн хамт амьдарна. Гэтэл хуучин аюул эргэн ирж, өмнө нь эхлүүлсэн зүйлээ дуусгахаар гарч ирэх болно...</p>
+                <a href="movie-avatar2.html" class="btn">Дэлгэрэнгүй</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg');">
+            <div class="slide-content">
+                <h2>Dune: Part Two</h2>
+                <p>Пол Атрейдес гэр бүлийг нь устгасан зальхай хүмүүстэй өшөө авахаар тэмцэж, Чани болон Фременчүүдтэй нэгдэнэ.</p>
+                <a href="movie-dune2.html" class="btn">Дэлгэрэнгүй</a>
+            </div>
+        </div>
+        <div class="slide active" style="background-image: url('https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg');">
+            <div class="slide-content">
+                <h2>Interstellar</h2>
+                <p>Ирээдүйд Дэлхий дээр амьдрах боломжгүй болоход фермер бөгөөд NASA-гийн экс нисгэгч хүн төрөлхтөнд шинэ гариг олох зорилгоор сансар руу аялахаар болно.</p>
+                <a href="movies.html" class="btn">Дэлгэрэнгүй</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://image.tmdb.org/t/p/original/jYEW5xZkZk2WTrdbMGAPFuBqbDc.jpg');">
+            <div class="slide-content">
+                <h2>Dune: Part One</h2>
+                <p>Пол Атрейдес гэр бүл болон ард түмнийхээ ирээдүйг аврахын тулд орчлон ертөнцийн хамгийн аюултай гариг руу аялах ёстой болно.</p>
+                <a href="movies.html" class="btn">Дэлгэрэнгүй</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://image.tmdb.org/t/p/original/nb3xI8XI3w4pMVZ38VijbsyBqP4.jpg');">
+            <div class="slide-content">
+                <h2>Oppenheimer</h2>
+                <p>Дэлхийн 2-р дайны үеэр физикч Ж. Роберт Оппенхаймер маш нууцлаг Манхаттэний төсөлд ажиллаж, улмаар анхны цөмийн бөмбөгийг бүтээхэд гар бие оролцжээ.</p>
+                <a href="movies.html" class="btn">Дэлгэрэнгүй</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://media.themoviedb.org/t/p/w1000_and_h563_face/uH1cuq2hmZn5B4oiR9a1l4Wy91I.jpg');">
+            <div class="slide-content">
+                <h2>Ride On</h2>
+                <p>Нас өндөр гарсан каскадёр болон түүний хайртай морь хоёр гэнэтийн өр төлбөрийн асуудлаас болж салж сарних аюул нүүрлэхэд гэнэтийн олны анхааралд өртөнө.</p>
+                <a href="movies.html" class="btn">Дэлгэрэнгүй</a>
+            </div>
+        </div>
+
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+
+        <div class="dots-container">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+        </div>
     </div>
 
     <h2 class="Title">Онцлох кинонууд</h2>
@@ -85,17 +124,77 @@
             <p class="movie-news">Сансар, Зөгнөлт | 2014</p>
             <a href="movie-interstellar.html" class="btn">Дэлгэрэнгүй</a>
         </div>
-</div>
+    </div>
 </div>
 
 <footer class="Footer">
-    <p>Cinemania © 2026.  </p>
+    <p>Cinemania © 2026.</p>
 </footer>
 
 <script>
-let dateElement = document.getElementById('date-display');
-let today = new Date();
-dateElement.innerText = today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
+    // Огноо харуулах
+    let dateElement = document.getElementById('date-display');
+    let today = new Date();
+    dateElement.innerText = today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
+
+    // Нэвтэрсэн эсэхийг шалгах
+    let isLoggedIn = localStorage.getItem('cinemania_logged_in');
+    let loggedUser = localStorage.getItem('cinemania_ner');
+
+    if (isLoggedIn === 'true' && loggedUser) {
+        let authContainer = document.getElementById('auth-container');
+        authContainer.innerHTML = `
+            <div style="display: inline-flex; align-items: center; gap: 10px;">
+                <a href="login.html" style="color: #06b6d4; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
+                    👤 ${loggedUser}
+                </a> 
+                <a href="login.html" onclick="localStorage.removeItem('cinemania_logged_in');" class="btn" style="padding: 5px 12px; font-size: 13px; background: #d9534f; color: #fff; border-radius: 4px; text-decoration: none;">Гарах</a>
+            </div>
+        `;
+    }
+
+    // Slideshow логик
+    let slideIndex = 0;
+    let slides = document.querySelectorAll('.slide');
+    let dots = document.querySelectorAll('.dot');
+    let slideInterval;
+
+    function showSlide(n) {
+        if (slides.length === 0) return;
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        slideIndex = (n + slides.length) % slides.length;
+        slides[slideIndex].classList.add('active');
+        dots[slideIndex].classList.add('active');
+    }
+
+    function moveSlide(n) {
+        showSlide(slideIndex + n);
+        resetTimer();
+    }
+
+    function currentSlide(n) {
+        showSlide(n);
+        resetTimer();
+    }
+
+    function startSlider() {
+        slideInterval = setInterval(() => {
+            slideIndex++;
+            showSlide(slideIndex);
+        }, 4000);
+    }
+
+    function resetTimer() {
+        clearInterval(slideInterval);
+        startSlider();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        showSlide(slideIndex);
+        startSlider();
+    });
 </script>
 
 </body>

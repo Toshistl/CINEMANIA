@@ -37,7 +37,7 @@
                 authContainer.innerHTML = `
                     <div style="display: inline-flex; align-items: center; gap: 10px;">
                         <!-- Нэр дээр дарахад login.html (профайл) руу орно -->
-                        <a href="login.html" style="color: #ffc107; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
+                        <a href="login.html" style="color: #06b6d4; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;" title="Профайл үзэх">
                              ${loggedUser}
                         </a> 
                         <!-- Гарах товч дарахад зөвхөн нэвтэрсэн төлөвийг арилгана -->
@@ -55,7 +55,7 @@
         
         <!-- Сонгох товчлуурууд (Tabs) -->
         <div id="tab-buttons" style="display: flex; margin-bottom: 25px; border-bottom: 1px solid #333;">
-            <button id="tab-burtgel-btn" onclick="showBurtgel()" style="flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid #ffc107; color: #ffc107; font-weight: bold; cursor: pointer;">Бүртгүүлэх</button>
+            <button id="tab-burtgel-btn" onclick="showBurtgel()" style="flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid #06b6d4; color: #06b6d4; font-weight: bold; cursor: pointer;">Бүртгүүлэх</button>
             <button id="tab-nevtreh-btn" onclick="showNevtreh()" style="flex: 1; padding: 10px; background: none; border: none; color: #aaa; cursor: pointer;">Нэвтрэх</button>
         </div>
 
@@ -108,13 +108,13 @@
                 <button onclick="changeAvatar()" class="btn" style="padding: 6px 10px; font-size: 12px; margin-top: 5px; cursor: pointer;">Зураг солих</button>
             </div>
 
-            <h3 id="p-ner" style="color: #ffc107; margin-bottom: 5px;"></h3>
+            <h3 id="p-ner" style="color: #06b6d4; margin-bottom: 5px;"></h3>
             <p id="p-email" style="color: #aaa; font-size: 14px; margin-bottom: 15px;"></p>
 
             <div class="profile-info" style="background: #252525; padding: 12px; border-radius: 6px; margin-bottom: 20px; text-align: left;">
                 <p style="margin: 5px 0; color: #ddd;"><strong>Сайтын статус:</strong> Гишүүн</p>
                 <!-- Үзсэн кинонуудын тоог localStorage-оос авч харуулна -->
-                <p style="margin: 5px 0; color: #ddd;"><strong>Үзсэн кинонуудын тоо:</strong> <span id="watched-count" style="color: #ffc107; font-weight: bold;">0</span></p>
+                <p style="margin: 5px 0; color: #ddd;"><strong>Үзсэн кинонуудын тоо:</strong> <span id="watched-count" style="color: #06b6d4; font-weight: bold;">0</span></p>
             </div>
 
             <button onclick="garah()" class="btn profile-logout" style="background: #d9534f; border: none; padding: 8px 15px; cursor: pointer; color: #fff; border-radius: 4px;">Системээс гарах</button>
@@ -136,8 +136,8 @@ function showBurtgel() {
     document.getElementById('profile-sec').style.display = 'none';
     document.getElementById('tab-buttons').style.display = 'flex';
     
-    document.getElementById('tab-burtgel-btn').style.color = '#ffc107';
-    document.getElementById('tab-burtgel-btn').style.borderBottom = '2px solid #ffc107';
+    document.getElementById('tab-burtgel-btn').style.color = '#06b6d4';
+    document.getElementById('tab-burtgel-btn').style.borderBottom = '2px solid #06b6d4';
     document.getElementById('tab-nevtreh-btn').style.color = '#aaa';
     document.getElementById('tab-nevtreh-btn').style.borderBottom = 'none';
 }
@@ -148,8 +148,8 @@ function showNevtreh() {
     document.getElementById('profile-sec').style.display = 'none';
     document.getElementById('tab-buttons').style.display = 'flex';
     
-    document.getElementById('tab-nevtreh-btn').style.color = '#ffc107';
-    document.getElementById('tab-nevtreh-btn').style.borderBottom = '2px solid #ffc107';
+    document.getElementById('tab-nevtreh-btn').style.color = '#06b6d4';
+    document.getElementById('tab-nevtreh-btn').style.borderBottom = '2px solid #06b6d4';
     document.getElementById('tab-burtgel-btn').style.color = '#aaa';
     document.getElementById('tab-burtgel-btn').style.borderBottom = 'none';
 }

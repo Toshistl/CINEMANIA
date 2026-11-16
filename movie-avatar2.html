@@ -26,7 +26,7 @@
         <div style="flex: 1; min-width: 280px;"><img src="https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" alt="Avatar 2" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;"></div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-                <h1 style="color: #ffc107; margin-bottom: 15px;">Avatar: The Way of Water</h1>
+                <h1 style="color: #06b6d4; margin-bottom: 15px;">Avatar: The Way of Water</h1>
                 <p style="color: #aaa; margin-bottom: 15px; font-size: 14px;"><strong>Төрөл:</strong> Зөгнөлт, Экшн | <strong>Он:</strong> 2022 | <strong>Үнэлгээ:</strong> 7.6/10</p>
                 <p style="line-height: 1.6; color: #ddd; margin-bottom: 20px;">Жэйк Салли болон Нейтири нар гэр бүлээ хамгаалж, Пандорагийн далайн бүс нутгаар дүрвэн амьдрах болно.</p>
             </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="video-card" style="margin-bottom: 20px;">
         <div style="margin-bottom: 15px; display: flex; gap: 10px;">
-            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #ffc107; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
+            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #06b6d4; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
             <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2</button>
         </div>
         <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9;">
@@ -54,7 +54,7 @@ window.changeServer = function(serverType) {
     ['vidlink', 'vidsrc'].forEach(s => {
         let btn = document.getElementById(`btn-${s}`);
         if (s === serverType) {
-            btn.style.background = '#ffc107';
+            btn.style.background = '#06b6d4';
             btn.style.color = '#000';
         } else {
             btn.style.background = '#333';
