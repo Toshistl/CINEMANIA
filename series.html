@@ -46,15 +46,13 @@
 </nav>
 
 <div class="container">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
-        <h2 class="Title" style="color: #06b6d4; margin: 0;"></h2>
-        
-        <form action="search.html" method="GET" style="display: flex; gap: 8px;">
-            <input type="text" name="q" placeholder="Кино, сериал хайх..." style="padding: 8px 14px; background: #222630; border: 1px solid #444; color: #fff; border-radius: 4px; outline: none; font-size: 14px; min-width: 200px;">
-            <button type="submit" class="btn" style="padding: 8px 16px; cursor: pointer;">Хайх</button>
-        </form>
-    </div>
-    <h2 class="Title">Алдартай сериалууд</h2>
+    <div class="page-header-flex">
+    <h2 class="Title" style="margin: 0;">Алдартай сериалууд</h2>
+    <form action="search.html" method="GET" class="top-search-form">
+        <input type="text" name="q" placeholder="Кино, сериал хайх...">
+        <button type="submit" class="btn">Хайх</button>
+    </form>
+</div>
     
     <div class="movie-net">
         <div class="movie-card">
