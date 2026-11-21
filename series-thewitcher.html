@@ -38,7 +38,7 @@
     </div>
 
     <div class="video-card" style="margin-bottom: 20px;">   
-        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+        <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
             <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #06b6d4; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
             <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2</button>
         </div>
@@ -117,6 +117,7 @@ window.changeServer = function(serverType) {
     } else if (serverType === 'vidsrc') {
         url = `https://vidsrc.me/embed/tv?tmdb=${tmdbId}&season=${season}&episode=${episode}`;
     }
+
     seriesPlayer.src = url;
 };
 
