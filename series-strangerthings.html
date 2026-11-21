@@ -79,12 +79,21 @@ function updateEpisodes() {
     episodeSelect.innerHTML = '';
     for (let i = 1; i <= totalEpisodes; i++) {
         let option = document.createElement('option');
-        option.value = i; option.innerText = i + "-р анги";
+        option.value = i;
+        option.innerText = i + "-р анги";
         episodeSelect.appendChild(option);
     }
 }
 updateEpisodes();
-seasonSelect.addEventListener('change', updateEpisodes);
+
+seasonSelect.addEventListener('change', function() {
+    updateEpisodes();
+    changeServer(currentServer);
+});
+
+episodeSelect.addEventListener('change', function() {
+    changeServer(currentServer);
+});
 
 window.changeServer = function(serverType) {
     currentServer = serverType;
