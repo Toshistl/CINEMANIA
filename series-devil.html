@@ -25,7 +25,7 @@
 <div class="container" style="margin-bottom: 60px;">
     <div style="background-color: #1f1f1f; border: 1px solid #333; border-radius: 8px; padding: 30px; display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
         <div style="flex: 1; min-width: 280px;">
-            <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/4yrW5uBgcx7GSehJotlxWjAD0NQ.jpg" alt="Chernobyl" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
+            <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/4yrW5uBgcx7GSehJotlxWjAD0NQ.jpg" alt="The Testament of Sister New Devil" style="width: 100%; border-radius: 6px; object-fit: cover; max-height: 400px;">
         </div>
         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
@@ -38,9 +38,15 @@
     </div>
 
     <div class="video-card" style="margin-bottom: 20px;">   
-        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
-            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #06b6d4; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1</button>
-            <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2</button>
+        <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button onclick="changeServer('vidlink')" id="btn-vidlink" class="btn" style="background: #06b6d4; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 1 (VidLink)</button>
+            <button onclick="changeServer('vidsrc')" id="btn-vidsrc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 2 (VidSrc.me)</button>
+            <button onclick="changeServer('vidsrccc')" id="btn-vidsrccc" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 3 (VidSrc.cc)</button>
+            <button onclick="changeServer('vidsrcsh')" id="btn-vidsrcsh" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 4 (VidSrc.sh)</button>
+            <button onclick="changeServer('vidsrcvip')" id="btn-vidsrcvip" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 5 (VidSrc.vip)</button>
+            <button onclick="changeServer('vidsrcto')" id="btn-vidsrcto" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 6 (VidSrc.to)</button>
+            <button onclick="changeServer('vidsrcru')" id="btn-vidsrcru" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 7 (VidSrc.ru)</button>
+            <button onclick="changeServer('multiembed')" id="btn-multiembed" class="btn" style="background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer;">Сервер 8 (MultiEmbed)</button>
         </div>
 
         <div class="video-wrap" style="position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 20px;">
@@ -50,9 +56,9 @@
         <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
             <label style="color: #aaa;">Улирал: 
                 <select id="season-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;">
-                    <option value="1">0-р бүлэг</option>
-                    <option value="1">1-р бүлэг</option>
-                    <option value="1">2-р бүлэг</option>
+                    <option value="0">0-р бүлэг</option>
+                    <option value="1" selected>1-р бүлэг</option>
+                    <option value="2">2-р бүлэг</option>
                 </select>
             </label>
             <label style="color: #aaa;">Анги: <select id="episode-select" style="background: #2a2a2a; color: #fff; padding: 6px 12px; border: 1px solid #444; border-radius: 4px;"></select></label>
@@ -69,24 +75,36 @@ let dateElement = document.getElementById('date-display');
 dateElement.innerText = new Date().getFullYear() + "." + (new Date().getMonth() + 1) + "." + new Date().getDate();
 
 let tmdbId = 64163;
-let seasonEpisodes = { 0:13 , 1: 10 , 2: 12 };
+let seasonEpisodes = { 0: 13, 1: 12, 2: 10 };
 let seasonSelect = document.getElementById('season-select');
 let episodeSelect = document.getElementById('episode-select');
 let seriesPlayer = document.getElementById('series-player');
 let playBtn = document.getElementById('play-btn');
 let currentServer = 'vidlink';
 
+const servers = ['vidlink', 'vidsrc', 'vidsrccc', 'vidsrcsh', 'vidsrcvip', 'vidsrcto', 'vidsrcru', 'multiembed'];
+
 function updateEpisodes() {
     let totalEpisodes = seasonEpisodes[seasonSelect.value] || 10;
     episodeSelect.innerHTML = '';
     for (let i = 1; i <= totalEpisodes; i++) {
         let option = document.createElement('option');
-        option.value = i; option.innerText = i + "-р анги";
+        option.value = i;
+        option.innerText = i + "-р анги";
         episodeSelect.appendChild(option);
     }
 }
+
 updateEpisodes();
-seasonSelect.addEventListener('change', updateEpisodes);
+
+seasonSelect.addEventListener('change', function() {
+    updateEpisodes();
+    changeServer(currentServer);
+});
+
+episodeSelect.addEventListener('change', function() {
+    changeServer(currentServer);
+});
 
 window.changeServer = function(serverType) {
     currentServer = serverType;
@@ -94,14 +112,16 @@ window.changeServer = function(serverType) {
     let episode = episodeSelect.value;
     let url = '';
 
-    ['vidlink', 'vidsrc'].forEach(s => {
+    servers.forEach(s => {
         let btn = document.getElementById(`btn-${s}`);
-        if (s === serverType) {
-            btn.style.background = '#06b6d4';
-            btn.style.color = '#000';
-        } else {
-            btn.style.background = '#333';
-            btn.style.color = '#fff';
+        if (btn) {
+            if (s === serverType) {
+                btn.style.background = '#06b6d4';
+                btn.style.color = '#000';
+            } else {
+                btn.style.background = '#333';
+                btn.style.color = '#fff';
+            }
         }
     });
 
@@ -109,7 +129,20 @@ window.changeServer = function(serverType) {
         url = `https://vidlink.pro/tv/${tmdbId}/${season}/${episode}?autoplay=false`;
     } else if (serverType === 'vidsrc') {
         url = `https://vidsrc.me/embed/tv?tmdb=${tmdbId}&season=${season}&episode=${episode}`;
+    } else if (serverType === 'vidsrccc') {
+        url = `https://vidsrc.cc/v2/embed/tv/${tmdbId}/${season}/${episode}?autoPlay=false`;
+    } else if (serverType === 'vidsrcsh') {
+        url = `https://vidsrc.sh/embed/tv/${tmdbId}/${season}/${episode}`;
+    } else if (serverType === 'vidsrcvip') {
+        url = `https://vidsrc.vip/embed/tv/${tmdbId}/${season}/${episode}`;
+    } else if (serverType === 'vidsrcto') {
+        url = `https://vidsrc.to/embed/tv/${tmdbId}/${season}/${episode}`;
+    } else if (serverType === 'vidsrcru') {
+        url = `https://vidsrc-embed.ru/embed/tv/${tmdbId}/${season}/${episode}`;
+    } else if (serverType === 'multiembed') {
+        url = `https://multiembed.mov/?video_id=${tmdbId}&tmdb=1&s=${season}&e=${episode}`;
     }
+
     seriesPlayer.src = url;
 };
 
